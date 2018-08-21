@@ -8,22 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		0CEEBA0D212B48B50019CB3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA0C212B48B50019CB3D /* AppDelegate.swift */; };
-		0CEEBA0F212B48B50019CB3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA0E212B48B50019CB3D /* ViewController.swift */; };
+		0CEEBA0F212B48B50019CB3D /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA0E212B48B50019CB3D /* RequestManager.swift */; };
 		0CEEBA12212B48B50019CB3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEBA10212B48B50019CB3D /* Main.storyboard */; };
 		0CEEBA15212B48B50019CB3D /* MarvelOus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA13212B48B50019CB3D /* MarvelOus.xcdatamodeld */; };
 		0CEEBA17212B48B70019CB3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEBA16212B48B70019CB3D /* Assets.xcassets */; };
 		0CEEBA1A212B48B70019CB3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEBA18212B48B70019CB3D /* LaunchScreen.storyboard */; };
+		0CEEBA22212C232D0019CB3D /* FavoritesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA21212C232D0019CB3D /* FavoritesCollectionView.swift */; };
+		0CEEBA24212C23390019CB3D /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA23212C23390019CB3D /* FavoritesCollectionViewCell.swift */; };
+		0CEEBA26212C23480019CB3D /* FavoritesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA25212C23480019CB3D /* FavoritesTableView.swift */; };
+		0CEEBA28212C23A00019CB3D /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA27212C23A00019CB3D /* FavoritesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0CEEBA09212B48B50019CB3D /* MarvelOus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelOus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CEEBA0C212B48B50019CB3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0CEEBA0E212B48B50019CB3D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0CEEBA0E212B48B50019CB3D /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		0CEEBA11212B48B50019CB3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0CEEBA14212B48B50019CB3D /* MarvelOus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarvelOus.xcdatamodel; sourceTree = "<group>"; };
 		0CEEBA16212B48B70019CB3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CEEBA19212B48B70019CB3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CEEBA1B212B48B70019CB3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CEEBA21212C232D0019CB3D /* FavoritesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionView.swift; sourceTree = "<group>"; };
+		0CEEBA23212C23390019CB3D /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
+		0CEEBA25212C23480019CB3D /* FavoritesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableView.swift; sourceTree = "<group>"; };
+		0CEEBA27212C23A00019CB3D /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +65,11 @@
 			isa = PBXGroup;
 			children = (
 				0CEEBA0C212B48B50019CB3D /* AppDelegate.swift */,
-				0CEEBA0E212B48B50019CB3D /* ViewController.swift */,
+				0CEEBA0E212B48B50019CB3D /* RequestManager.swift */,
+				0CEEBA25212C23480019CB3D /* FavoritesTableView.swift */,
+				0CEEBA27212C23A00019CB3D /* FavoritesTableViewCell.swift */,
+				0CEEBA21212C232D0019CB3D /* FavoritesCollectionView.swift */,
+				0CEEBA23212C23390019CB3D /* FavoritesCollectionViewCell.swift */,
 				0CEEBA10212B48B50019CB3D /* Main.storyboard */,
 				0CEEBA16212B48B70019CB3D /* Assets.xcassets */,
 				0CEEBA18212B48B70019CB3D /* LaunchScreen.storyboard */,
@@ -138,9 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CEEBA0F212B48B50019CB3D /* ViewController.swift in Sources */,
+				0CEEBA0F212B48B50019CB3D /* RequestManager.swift in Sources */,
+				0CEEBA26212C23480019CB3D /* FavoritesTableView.swift in Sources */,
 				0CEEBA15212B48B50019CB3D /* MarvelOus.xcdatamodeld in Sources */,
+				0CEEBA22212C232D0019CB3D /* FavoritesCollectionView.swift in Sources */,
+				0CEEBA24212C23390019CB3D /* FavoritesCollectionViewCell.swift in Sources */,
 				0CEEBA0D212B48B50019CB3D /* AppDelegate.swift in Sources */,
+				0CEEBA28212C23A00019CB3D /* FavoritesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
