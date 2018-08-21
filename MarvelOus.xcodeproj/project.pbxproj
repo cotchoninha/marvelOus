@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0CE3D3C8212C3F550000BFFC /* CharacterStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE3D3C7212C3F550000BFFC /* CharacterStruct.swift */; };
+		0CE3D3CA212C480F0000BFFC /* DetailCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE3D3C9212C480F0000BFFC /* DetailCharacterView.swift */; };
 		0CEEBA0D212B48B50019CB3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA0C212B48B50019CB3D /* AppDelegate.swift */; };
 		0CEEBA0F212B48B50019CB3D /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA0E212B48B50019CB3D /* RequestManager.swift */; };
 		0CEEBA12212B48B50019CB3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEBA10212B48B50019CB3D /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		0CE3D3C7212C3F550000BFFC /* CharacterStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStruct.swift; sourceTree = "<group>"; };
+		0CE3D3C9212C480F0000BFFC /* DetailCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterView.swift; sourceTree = "<group>"; };
 		0CEEBA09212B48B50019CB3D /* MarvelOus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelOus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CEEBA0C212B48B50019CB3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CEEBA0E212B48B50019CB3D /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			children = (
 				0CEEBA0C212B48B50019CB3D /* AppDelegate.swift */,
 				0CEEBA0E212B48B50019CB3D /* RequestManager.swift */,
+				0CE3D3C9212C480F0000BFFC /* DetailCharacterView.swift */,
 				0CE3D3C7212C3F550000BFFC /* CharacterStruct.swift */,
 				0CEEBA25212C23480019CB3D /* FavoritesTableView.swift */,
 				0CEEBA27212C23A00019CB3D /* FavoritesTableViewCell.swift */,
@@ -155,6 +158,7 @@
 			files = (
 				0CEEBA0F212B48B50019CB3D /* RequestManager.swift in Sources */,
 				0CEEBA26212C23480019CB3D /* FavoritesTableView.swift in Sources */,
+				0CE3D3CA212C480F0000BFFC /* DetailCharacterView.swift in Sources */,
 				0CE3D3C8212C3F550000BFFC /* CharacterStruct.swift in Sources */,
 				0CEEBA15212B48B50019CB3D /* MarvelOus.xcdatamodeld in Sources */,
 				0CEEBA22212C232D0019CB3D /* FavoritesCollectionView.swift in Sources */,

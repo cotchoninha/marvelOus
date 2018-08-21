@@ -127,6 +127,81 @@
             </objects>
             <point key="canvasLocation" x="-612" y="-689"/>
         </scene>
+        <!--Detail Character View-->
+        <scene sceneID="DSg-f5-Apz">
+            <objects>
+                <viewController storyboardIdentifier="detailViewController" id="616-SY-CL9" customClass="DetailCharacterView" customModule="MarvelOus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FKm-8P-FVf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YBq-8M-i1F">
+                                <rect key="frame" x="16" y="93" width="343" height="437"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="437" id="0Dv-ii-bPH"/>
+                                </constraints>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apv-st-unH">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="UZf-Eu-VpH">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="zHT-YA-DwT">
+                                            <connections>
+                                                <action selector="backToTab:" destination="616-SY-CL9" id="XZd-Kk-yTA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5Q-kV-vng">
+                                <rect key="frame" x="16" y="538" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dg4-yA-1PU">
+                                <rect key="frame" x="313" y="483" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="heart"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fI-O4-dII">
+                                <rect key="frame" x="16" y="567" width="343" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="2Ix-vn-U9M"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YBq-8M-i1F" firstAttribute="leading" secondItem="Y2G-AZ-M5G" secondAttribute="leading" constant="16" id="1Ph-Ol-qur"/>
+                            <constraint firstItem="P5Q-kV-vng" firstAttribute="top" secondItem="YBq-8M-i1F" secondAttribute="bottom" constant="8" id="2jD-nK-aFZ"/>
+                            <constraint firstItem="apv-st-unH" firstAttribute="trailing" secondItem="Y2G-AZ-M5G" secondAttribute="trailing" id="33F-9t-NHw"/>
+                            <constraint firstItem="Y2G-AZ-M5G" firstAttribute="trailing" secondItem="YBq-8M-i1F" secondAttribute="trailing" constant="16" id="4Re-NN-B4N"/>
+                            <constraint firstItem="apv-st-unH" firstAttribute="leading" secondItem="Y2G-AZ-M5G" secondAttribute="leading" id="88U-Fj-cVg"/>
+                            <constraint firstItem="Y2G-AZ-M5G" firstAttribute="trailing" secondItem="P5Q-kV-vng" secondAttribute="trailing" constant="16" id="Ico-ir-MGp"/>
+                            <constraint firstItem="Y2G-AZ-M5G" firstAttribute="trailing" secondItem="8fI-O4-dII" secondAttribute="trailing" constant="16" id="M7v-Ew-BuG"/>
+                            <constraint firstItem="8fI-O4-dII" firstAttribute="leading" secondItem="Y2G-AZ-M5G" secondAttribute="leading" constant="16" id="QRq-W7-vgd"/>
+                            <constraint firstItem="YBq-8M-i1F" firstAttribute="top" secondItem="apv-st-unH" secondAttribute="bottom" constant="29" id="QXh-Fz-bg0"/>
+                            <constraint firstItem="8fI-O4-dII" firstAttribute="top" secondItem="P5Q-kV-vng" secondAttribute="bottom" constant="8" id="jYi-rD-eFl"/>
+                            <constraint firstItem="P5Q-kV-vng" firstAttribute="leading" secondItem="Y2G-AZ-M5G" secondAttribute="leading" constant="16" id="wJh-iP-MZf"/>
+                            <constraint firstItem="apv-st-unH" firstAttribute="top" secondItem="Y2G-AZ-M5G" secondAttribute="top" id="x5a-jt-khg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Y2G-AZ-M5G"/>
+                    </view>
+                    <connections>
+                        <outlet property="characterDescription" destination="8fI-O4-dII" id="ruI-d8-qQp"/>
+                        <outlet property="characterName" destination="P5Q-kV-vng" id="mwJ-1a-iWz"/>
+                        <outlet property="characterPhoto" destination="YBq-8M-i1F" id="R6q-LU-tcy"/>
+                        <outlet property="favoriteButton" destination="dg4-yA-1PU" id="6pN-r8-w4t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wml-Zc-ZzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="863.20000000000005" y="-1056.5217391304348"/>
+        </scene>
         <!--Item-->
         <scene sceneID="Ie0-ss-Gp5">
             <objects>

@@ -25,4 +25,9 @@ class FavoritesCollectionView: UIViewController, UICollectionViewDelegate, UICol
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! DetailCharacterView
+        self.present(controller, animated: true, completion: nil)
+    }
+    
 }

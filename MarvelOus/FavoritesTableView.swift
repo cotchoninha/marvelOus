@@ -29,5 +29,10 @@ class FavoritesTableView: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! DetailCharacterView
+        self.present(controller, animated: true, completion: nil)
+    }
+    
     
 }
