@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -55,19 +56,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hyt-W8-wXY">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="179" height="255"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ffx-Es-aWU">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="Ffx-Es-aWU">
+                                <rect key="frame" x="0.0" y="0.0" width="179" height="255"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="179" height="255"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TQb-77-hBD">
+                                            <rect key="frame" x="0.0" y="0.0" width="179" height="206"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRj-4d-KuL">
+                                            <rect key="frame" x="20" y="214" width="139" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdO-8p-gLb">
+                                            <rect key="frame" x="139" y="174" width="32" height="32"/>
+                                            <state key="normal" image="heart"/>
+                                        </button>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="TQb-77-hBD" firstAttribute="top" secondItem="Ffx-Es-aWU" secondAttribute="top" id="4Do-ki-gXd"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="uRj-4d-KuL" secondAttribute="trailing" constant="12" id="R04-Rr-GOt"/>
+                                    <constraint firstItem="uRj-4d-KuL" firstAttribute="top" secondItem="cdO-8p-gLb" secondAttribute="bottom" constant="8" id="RcE-Cy-MvK"/>
+                                    <constraint firstItem="uRj-4d-KuL" firstAttribute="leading" secondItem="Ffx-Es-aWU" secondAttribute="leadingMargin" constant="12" id="Us3-1F-6KR"/>
+                                    <constraint firstAttribute="trailing" secondItem="cdO-8p-gLb" secondAttribute="trailing" constant="8" id="ZJi-xE-eqw"/>
+                                    <constraint firstItem="uRj-4d-KuL" firstAttribute="top" secondItem="TQb-77-hBD" secondAttribute="bottom" constant="8" id="dYo-c8-oNQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="TQb-77-hBD" secondAttribute="trailing" id="esy-Vc-DsN"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="uRj-4d-KuL" secondAttribute="bottom" constant="12" id="jB6-NB-rHZ"/>
+                                    <constraint firstItem="TQb-77-hBD" firstAttribute="leading" secondItem="Ffx-Es-aWU" secondAttribute="leading" id="wAR-BB-zup"/>
+                                </constraints>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -79,7 +106,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tDI-I7-aB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-772" y="-588"/>
+            <point key="canvasLocation" x="-772" y="-588.75562218890559"/>
         </scene>
         <!--Item-->
         <scene sceneID="ckg-Go-6rj">
@@ -90,7 +117,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="YRh-GD-XXm">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="YRh-GD-XXm">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YRh-GD-XXm" id="FPR-nP-3bC">
@@ -114,5 +141,6 @@
     <resources>
         <image name="CollectionView" width="30" height="30"/>
         <image name="TableView" width="30" height="30"/>
+        <image name="heart" width="32" height="32"/>
     </resources>
 </document>
