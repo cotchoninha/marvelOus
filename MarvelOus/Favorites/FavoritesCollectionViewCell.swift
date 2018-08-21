@@ -17,6 +17,7 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var favoriteButton: UIButton!
     
-    
+    //funcao do favorite Button
+    //salva no DB as infos da célula clicada
     
 }

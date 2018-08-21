@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 
 class SearchCharacterView: UIViewController {
     
@@ -29,7 +29,6 @@ class SearchCharacterView: UIViewController {
                 print("Couldn't get Marvel's Characters: \(error?.localizedDescription)")
             }
         }
-        
     }
 }
 
@@ -42,7 +41,12 @@ extension SearchCharacterView: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! CharacterSearchedCell
         cell.characterName.text = arrayofChars[indexPath.row].name
-        
+        cell.buttonAction = { sender in
+//             Do whatever you want from your button here.
+            let character = Character(context: DataBaseController.getContext())
+            character.id = Int32(self.arrayofChars[indexPath.row].id)
+            print("MARCELA: saved id ON CHARACTER : \(character)")
+        }
         return cell
     }
     

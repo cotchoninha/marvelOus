@@ -15,4 +15,10 @@ class CharacterSearchedCell: UICollectionViewCell{
     @IBOutlet weak var characterName: UILabel!
     
     @IBOutlet weak var favoriteButton: UIButton!
+    
+    var buttonAction: ((Any) -> Void)?
+    
+    @IBAction func setFavourite(_ sender: Any) {
+        self.buttonAction?(sender)
+    }
 }
