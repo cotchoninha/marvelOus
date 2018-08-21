@@ -331,6 +331,10 @@
                                                         <action selector="setFavourite:" destination="al6-xS-9Bw" eventType="touchUpInside" id="xuj-AP-kZa"/>
                                                     </connections>
                                                 </button>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="L3L-3G-dtd">
+                                                    <rect key="frame" x="79" y="117" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -345,6 +349,7 @@
                                             <constraint firstItem="pBb-qh-b03" firstAttribute="leading" secondItem="al6-xS-9Bw" secondAttribute="leading" constant="7" id="z1Q-qT-VaC"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activityIndicatorCell" destination="L3L-3G-dtd" id="Jdx-GO-lZX"/>
                                             <outlet property="characterName" destination="pBb-qh-b03" id="bdO-JT-o9c"/>
                                             <outlet property="characterPhoto" destination="lL0-2Y-2AI" id="YpD-SP-Z7C"/>
                                             <outlet property="favoriteButton" destination="P0t-T6-7q2" id="D1F-22-MDZ"/>

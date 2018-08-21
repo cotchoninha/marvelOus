@@ -83,7 +83,7 @@ class MarvelRequestManager: NSObject{
                     displayError("Cannot find values")
                     return
                 }
-                charactersArray.append(MarvelCharacter(id: id as! Int, name: name as! String, description: description as! String, path: path as! String, imgExtension: imgExtension as! String))
+                charactersArray.append(MarvelCharacter(id: id as! Int, name: name as! String, description: description as! String, path: path as! String, imgExtension: imgExtension as! String, characterPhoto: nil))
                 
             }
             print("MARCELA: charactersArray \(charactersArray)")
@@ -152,7 +152,7 @@ class MarvelRequestManager: NSObject{
                     displayError("Cannot find values")
                     return
                 }
-                charactersArray.append(MarvelCharacter(id: id as! Int, name: name as! String, description: description as! String, path: path as! String, imgExtension: imgExtension as! String))
+                charactersArray.append(MarvelCharacter(id: id as! Int, name: name as! String, description: description as! String, path: path as! String, imgExtension: imgExtension as! String, characterPhoto: nil))
                 
             }
             print("MARCELA: charactersArray \(charactersArray)")

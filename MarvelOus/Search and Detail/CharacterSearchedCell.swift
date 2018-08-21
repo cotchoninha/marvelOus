@@ -21,5 +21,6 @@ class CharacterSearchedCell: UICollectionViewCell{
     @IBAction func setFavourite(_ sender: Any) {
         self.buttonAction?()
     }
+    @IBOutlet weak var activityIndicatorCell: UIActivityIndicatorView!
     
 }
