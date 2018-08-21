@@ -82,9 +82,9 @@
 		0C0C1B09212C953000D43B4B /* Search and Detail */ = {
 			isa = PBXGroup;
 			children = (
-				0CE3D3C9212C480F0000BFFC /* DetailCharacterView.swift */,
 				0CE3D3CB212C52330000BFFC /* SearchCharacterView.swift */,
 				0CE3D3CD212C52560000BFFC /* CharacterSearchedCell.swift */,
+				0CE3D3C9212C480F0000BFFC /* DetailCharacterView.swift */,
 			);
 			path = "Search and Detail";
 			sourceTree = "<group>";

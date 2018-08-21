@@ -70,8 +70,8 @@ extension SearchCharacterView: UICollectionViewDelegate, UICollectionViewDataSou
                 cell.characterPhoto.image = UIImage(data: photoChar)
             }
         }
+        print("MARCELA: ARRAY: \(arrayofChars)")
         cell.buttonAction = {
-//             Do whatever you want from your button here.
             let character = Character(context: DataBaseController.getContext())
             character.id = Int32(self.arrayofChars[indexPath.item].id)
             character.charDescription = self.arrayofChars[indexPath.item].description
@@ -79,11 +79,14 @@ extension SearchCharacterView: UICollectionViewDelegate, UICollectionViewDataSou
             character.path = self.arrayofChars[indexPath.item].path
             character.imgExtension = self.arrayofChars[indexPath.item].imgExtension
             character.photoImage = self.arrayofChars[indexPath.item].characterPhoto
-            print("MARCELA: saved id ON CHARACTER : \(character)")
             DataBaseController.saveContext()
         }
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! DetailCharacterView
+        controller.character = self.arrayofChars[indexPath.item]
+        self.present(controller, animated: true, completion: nil)
+    }
 }

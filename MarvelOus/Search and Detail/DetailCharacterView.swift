@@ -11,6 +11,19 @@ import UIKit
 
 class DetailCharacterView: UIViewController {
     
+    var character: MarvelCharacter?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let character = self.character{
+            if let photoChar = character.characterPhoto{
+                characterPhoto.image = UIImage(data: photoChar)
+            }
+            characterName.text = character.name
+            characterDescription.text = character.description
+        }
+    }
+    
     @IBOutlet weak var characterPhoto: UIImageView!
     
     @IBOutlet weak var characterName: UILabel!
