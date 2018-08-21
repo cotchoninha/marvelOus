@@ -8,16 +8,23 @@
 
 import Foundation
 
-struct MarvelCharacter {
+struct MarvelCharacter: Codable {
     
     var id: Int
     var name: String
     var description: String
+    var path: String
+    var imgExtension: String
     
-    init(id: Int, name: String, description: String) {
+    init(id: Int, name: String, description: String, path: String, imgExtension: String) {
         self.id = id
         self.name = name
         self.description = description
+        self.path = path
+        self.imgExtension = imgExtension
     }
+}
+struct CharacterResult: Codable {
+    var results: [MarvelCharacter]?
 }
 

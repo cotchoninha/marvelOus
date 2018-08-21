@@ -11,7 +11,7 @@ import UIKit
 
 class FavoritesTableView: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    var charactersArray: [MarvelCharacter] = [MarvelCharacter(id: 1, name: "SpiderMan", description: "Homem Aranha"), MarvelCharacter(id: 2, name: "IronMan", description: "Homem de Ferro"), MarvelCharacter(id: 3, name: "Ant Man", description: "Homem Formiga"), MarvelCharacter(id: 4, name: "Captain America", description: "Capitão América")]
+    var charactersArray: [MarvelCharacter] = [MarvelCharacter(id: 1, name: "SpiderMan", description: "Homem Aranha", path: "", imgExtension: ""), MarvelCharacter(id: 2, name: "IronMan", description: "Homem de Ferro", path: "", imgExtension: ""), MarvelCharacter(id: 3, name: "Ant Man", description: "Homem Formiga", path: "", imgExtension: ""), MarvelCharacter(id: 4, name: "Captain America", description: "Capitão América", path: "", imgExtension: "")]
     
     override func viewDidLoad() {
         super.viewDidLoad()

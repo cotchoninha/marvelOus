@@ -9,5 +9,9 @@
 import UIKit
 
 class CharacterSearchedCell: UICollectionViewCell{
+    @IBOutlet weak var characterPhoto: UIImageView!
     
+    @IBOutlet weak var characterName: UILabel!
+    
+    @IBOutlet weak var favoriteButton: UIButton!
 }

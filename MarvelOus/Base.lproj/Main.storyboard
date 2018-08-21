@@ -337,6 +337,11 @@
                                             <constraint firstItem="lL0-2Y-2AI" firstAttribute="leading" secondItem="al6-xS-9Bw" secondAttribute="leading" id="o0f-tx-z2u"/>
                                             <constraint firstItem="pBb-qh-b03" firstAttribute="leading" secondItem="al6-xS-9Bw" secondAttribute="leading" constant="7" id="z1Q-qT-VaC"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="characterName" destination="pBb-qh-b03" id="bdO-JT-o9c"/>
+                                            <outlet property="characterPhoto" destination="lL0-2Y-2AI" id="YpD-SP-Z7C"/>
+                                            <outlet property="favoriteButton" destination="P0t-T6-7q2" id="D1F-22-MDZ"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

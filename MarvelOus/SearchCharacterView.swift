@@ -11,16 +11,32 @@ import UIKit
 
 class SearchCharacterView: UIViewController {
     
+    var arrayofChars = [MarvelCharacter]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        MarvelRequestManager.sharedInstance().getAllMarvelCharacters() { (success, arrayOfCharacters, error) in
+            if success{
+                if let arrayOfCharacters = arrayOfCharacters{
+                    self.arrayofChars = arrayOfCharacters
+                }
+            }else{
+                print("Couldn't get Marvel's Characters: \(error?.localizedDescription)")
+            }
+        }
+        
+    }
 }
 
 extension SearchCharacterView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return arrayofChars.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! CharacterSearchedCell
+        cell.characterName.text = arrayofChars[indexPath.row].name
         return cell
     }
     
