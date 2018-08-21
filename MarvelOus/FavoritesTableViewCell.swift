@@ -11,5 +11,9 @@ import UIKit
 
 class FavoritesTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var characterPhoto: UIImageView!
     
+    @IBOutlet weak var characterName: UILabel!
+    
+    @IBOutlet weak var favoriteButton: UIButton!
 }
