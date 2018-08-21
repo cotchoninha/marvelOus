@@ -162,17 +162,17 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCX-Bj-JVY">
                                                     <rect key="frame" x="335" y="23" width="32" height="32"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="50L-0I-gPW"/>
                                                         <constraint firstAttribute="width" constant="32" id="ueL-UP-oQw"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="heart"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="aCX-Bj-JVY" firstAttribute="top" secondItem="wpX-HY-pmu" secondAttribute="top" constant="23" id="9QO-jr-LWi"/>
                                                 <constraint firstItem="LIQ-GP-q2S" firstAttribute="centerY" secondItem="wpX-HY-pmu" secondAttribute="centerY" id="AAz-J4-ae8"/>
                                                 <constraint firstItem="NnL-9p-a6T" firstAttribute="centerY" secondItem="wpX-HY-pmu" secondAttribute="centerY" id="JLA-nz-pE7"/>
                                                 <constraint firstItem="LIQ-GP-q2S" firstAttribute="top" secondItem="wpX-HY-pmu" secondAttribute="topMargin" constant="13" id="U8y-OT-4O0"/>
-                                                <constraint firstAttribute="bottom" secondItem="aCX-Bj-JVY" secondAttribute="bottom" constant="24.5" id="a1x-uo-XMt"/>
+                                                <constraint firstItem="aCX-Bj-JVY" firstAttribute="centerY" secondItem="wpX-HY-pmu" secondAttribute="centerY" id="bzb-gj-UbF"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="LIQ-GP-q2S" secondAttribute="bottom" constant="15" id="ett-Fd-qIE"/>
                                                 <constraint firstAttribute="trailing" secondItem="aCX-Bj-JVY" secondAttribute="trailing" constant="8" id="u9z-6T-BUC"/>
                                                 <constraint firstItem="LIQ-GP-q2S" firstAttribute="leading" secondItem="NnL-9p-a6T" secondAttribute="trailing" constant="8" id="vUE-I8-VQS"/>
