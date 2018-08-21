@@ -14,9 +14,11 @@ class SearchCharacterView: UIViewController {
     var arrayofChars = [MarvelCharacter]()
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.startAnimating()
         MarvelRequestManager.sharedInstance().getAllMarvelCharacters() { (success, arrayOfCharacters, error) in
             if success{
                 if let arrayOfCharacters = arrayOfCharacters{
@@ -24,6 +26,8 @@ class SearchCharacterView: UIViewController {
                 }
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
+                    self.activityIndicator.hidesWhenStopped = true
+                    self.activityIndicator.stopAnimating()
                 }
             }else{
                 print("Couldn't get Marvel's Characters: \(error?.localizedDescription)")
@@ -63,6 +67,7 @@ extension SearchCharacterView: UICollectionViewDelegate, UICollectionViewDataSou
                 }
             print("MARCELA: saved id ON CHARACTER : \(character)")
             DataBaseController.saveContext()
+            
 
         }
         return cell

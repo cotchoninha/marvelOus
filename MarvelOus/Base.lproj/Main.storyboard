@@ -303,6 +303,10 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="UZM-YW-aQJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="547"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="searchCell" id="al6-xS-9Bw" customClass="CharacterSearchedCell" customModule="MarvelOus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="179" height="255"/>
@@ -374,6 +378,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="CollectionView" selectedImage="CollectionView" id="Yme-vn-cYa"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="UZM-YW-aQJ" id="WHh-Y6-5rY"/>
                         <outlet property="collectionView" destination="dyl-7J-3VK" id="cXA-sl-UaZ"/>
                     </connections>
                 </viewController>
