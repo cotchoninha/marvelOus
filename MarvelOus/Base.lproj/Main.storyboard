@@ -370,6 +370,9 @@
                         <viewLayoutGuide key="safeArea" id="pLg-w6-mlL"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="CollectionView" selectedImage="CollectionView" id="Yme-vn-cYa"/>
+                    <connections>
+                        <outlet property="collectionView" destination="dyl-7J-3VK" id="cXA-sl-UaZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BtG-UJ-GDa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -66,9 +66,9 @@ class MarvelRequestManager: NSObject{
                 return
             }
             
-            /* GUARD: Did Flickr return an error (stat != ok)? */
+            /* GUARD: Did Marvel return an error (stat != ok)? */
             guard let stat = parsedResult[Constants.MarvelResponseKeys.Status] as? String, stat == Constants.MarvelResponseValues.OKStatus else {
-                displayError("Flickr API returned an error. See error code and message in \(parsedResult)")
+                displayError("Marvel API returned an error. See error code and message in \(parsedResult)")
                 return
             }
             
@@ -138,12 +138,6 @@ class MarvelRequestManager: NSObject{
                 parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
             } catch {
                 displayError("Could not parse the data as JSON: '\(data)'")
-                return
-            }
-            
-            /* GUARD: Did Flickr return an error (stat != ok)? */
-            guard let stat = parsedResult[Constants.MarvelResponseKeys.Status] as? String, stat == Constants.MarvelResponseValues.OKStatus else {
-                displayError("Flickr API returned an error. See error code and message in \(parsedResult)")
                 return
             }
             

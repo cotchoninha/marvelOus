@@ -48,6 +48,6 @@ struct Constants {
     
     // MARK: Flickr Response Values
     struct MarvelResponseValues {
-        static let OKStatus = "ok"
+        static let OKStatus = "Ok"
     }
 }
