@@ -16,9 +16,10 @@ class CharacterSearchedCell: UICollectionViewCell{
     
     @IBOutlet weak var favoriteButton: UIButton!
     
-    var buttonAction: ((Any) -> Void)?
+    var buttonAction: (() -> Void)?
     
     @IBAction func setFavourite(_ sender: Any) {
-        self.buttonAction?(sender)
+        self.buttonAction?()
     }
+    
 }

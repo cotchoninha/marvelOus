@@ -40,12 +40,30 @@ extension SearchCharacterView: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! CharacterSearchedCell
-        cell.characterName.text = arrayofChars[indexPath.row].name
-        cell.buttonAction = { sender in
+        cell.characterName.text = arrayofChars[indexPath.item].name
+        cell.buttonAction = {
 //             Do whatever you want from your button here.
             let character = Character(context: DataBaseController.getContext())
-            character.id = Int32(self.arrayofChars[indexPath.row].id)
+            character.id = Int32(self.arrayofChars[indexPath.item].id)
+            character.charDescription = self.arrayofChars[indexPath.item].description
+            character.name = self.arrayofChars[indexPath.item].name
+            character.path = self.arrayofChars[indexPath.item].path
+            character.imgExtension = self.arrayofChars[indexPath.item].imgExtension
+            let urlString = "\(self.arrayofChars[indexPath.item].path).\(self.arrayofChars[indexPath.item].imgExtension)"
+                MarvelRequestManager.sharedInstance().downloadImage(url: urlString) { (imageData, error) in
+                    guard error == nil else{
+                        print("MARCELA couldn't download data: \(error)")
+                        return
+                    }
+                    print("MARCELA fim download da imagem")
+                    if let imageDataDownloaded = imageData{
+                        character.photoImage = imageDataDownloaded
+                        print("MARCELA: saved photoImage ON CHARACTER : \(character.photoImage)")
+                    }
+                }
             print("MARCELA: saved id ON CHARACTER : \(character)")
+            DataBaseController.saveContext()
+
         }
         return cell
     }

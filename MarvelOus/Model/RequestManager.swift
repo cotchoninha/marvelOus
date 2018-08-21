@@ -196,6 +196,39 @@ class MarvelRequestManager: NSObject{
             return nil
         }
     }
+    
+    func downloadImage(url: String, _ completionHandlerOnImageDownloaded: @escaping (_ imageData: Data?, _ error: Error?) -> Void){
+        if let urlString = URL(string: url){
+            let task = URLSession.shared.dataTask(with: urlString) { (imageData, response, error) in
+                func displayError(_ error: String) {
+                    print(error)
+                    print("URL at time of error: \(url)")
+                    completionHandlerOnImageDownloaded(nil, error as? Error)
+                }
+                
+                /* GUARD: Was there an error? */
+                guard (error == nil) else {
+                    displayError("There was an error with your request: \(error)")
+                    return
+                }
+                
+                /* GUARD: Did we get a successful 2XX response? */
+                guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                    displayError("Your request returned a status code other than 2xx!")
+                    return
+                }
+                
+                /* GUARD: Was there any data returned? */
+                guard let imageData = imageData else {
+                    displayError("No data was returned by the request!")
+                    return
+                }
+                
+                completionHandlerOnImageDownloaded(imageData, nil)
+            }
+            task.resume()
+        }
+    }
 
 }
 
