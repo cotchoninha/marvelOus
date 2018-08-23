@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class DetailCharacterView: UIViewController {
+class CharacterDetailsViewController: UIViewController {
     
     var character: APIMarvelCharacter?
     var isFavourite = false

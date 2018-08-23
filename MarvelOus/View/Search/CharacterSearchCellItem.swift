@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterSearchedCell: UICollectionViewCell{
+class CharacterSearchCellItem: UICollectionViewCell{
     
     @IBOutlet weak var characterPhoto: UIImageView!
     

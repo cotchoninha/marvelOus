@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SearchCharacterView: UIViewController {
+class CharacterSearchViewController: UIViewController {
     
     var arrayofChars = [APIMarvelCharacter]()
     
@@ -36,14 +36,14 @@ class SearchCharacterView: UIViewController {
     }
 }
 
-extension SearchCharacterView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayofChars.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! CharacterSearchedCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! CharacterSearchCellItem
         cell.characterName.text = arrayofChars[indexPath.item].name
         if arrayofChars[indexPath.item].characterPhoto == nil{
             cell.characterPhoto.image = #imageLiteral(resourceName: "placeholder")
@@ -85,7 +85,7 @@ extension SearchCharacterView: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! DetailCharacterView
+        let controller = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! CharacterDetailsViewController
         controller.character = self.arrayofChars[indexPath.item]
         self.present(controller, animated: true, completion: nil)
     }

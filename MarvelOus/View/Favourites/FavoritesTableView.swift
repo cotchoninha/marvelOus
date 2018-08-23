@@ -50,7 +50,7 @@ class FavoritesTableView: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! DetailCharacterView
+        let controller = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! CharacterDetailsViewController
         self.present(controller, animated: true, completion: nil)
     }
     
