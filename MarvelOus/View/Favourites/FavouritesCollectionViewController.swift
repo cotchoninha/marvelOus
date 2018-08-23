@@ -32,6 +32,7 @@ class FavouritesCollectionViewController: UIViewController, UICollectionViewDele
         collectionView.reloadData()
     }
     
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fetchedRC.fetchedObjects?.count ?? 0
     }
@@ -46,6 +47,16 @@ class FavouritesCollectionViewController: UIViewController, UICollectionViewDele
         cell.characterName.text = fetchedObject.name
         if let photoImage = fetchedObject.photoImage{
             cell.characterPhoto.image = UIImage(data: photoImage)
+        }
+        
+        cell.buttonAction = {
+            if let index = collectionView.indexPath(for: cell){
+                let objectToDelete = self.fetchedRC.object(at: index)
+                DataBaseController.getContext().delete(objectToDelete)
+                DataBaseController.saveContext()
+                self.fetchCharactersInDB()
+                collectionView.deleteItems(at: [index])
+            }
         }
         return cell
     }
