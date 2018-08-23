@@ -19,8 +19,8 @@
 		0CEEBA15212B48B50019CB3D /* MarvelOus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA13212B48B50019CB3D /* MarvelOus.xcdatamodeld */; };
 		0CEEBA17212B48B70019CB3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEBA16212B48B70019CB3D /* Assets.xcassets */; };
 		0CEEBA1A212B48B70019CB3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEBA18212B48B70019CB3D /* LaunchScreen.storyboard */; };
-		0CEEBA22212C232D0019CB3D /* FavoritesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA21212C232D0019CB3D /* FavoritesCollectionView.swift */; };
-		0CEEBA24212C23390019CB3D /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA23212C23390019CB3D /* FavoritesCollectionViewCell.swift */; };
+		0CEEBA22212C232D0019CB3D /* FavouritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA21212C232D0019CB3D /* FavouritesCollectionViewController.swift */; };
+		0CEEBA24212C23390019CB3D /* FavouritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA23212C23390019CB3D /* FavouritesCollectionViewCell.swift */; };
 		0CEEBA26212C23480019CB3D /* FavouritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA25212C23480019CB3D /* FavouritesTableViewController.swift */; };
 		0CEEBA28212C23A00019CB3D /* FavouritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA27212C23A00019CB3D /* FavouritesTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -40,8 +40,8 @@
 		0CEEBA16212B48B70019CB3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CEEBA19212B48B70019CB3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CEEBA1B212B48B70019CB3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0CEEBA21212C232D0019CB3D /* FavoritesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionView.swift; sourceTree = "<group>"; };
-		0CEEBA23212C23390019CB3D /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
+		0CEEBA21212C232D0019CB3D /* FavouritesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCollectionViewController.swift; sourceTree = "<group>"; };
+		0CEEBA23212C23390019CB3D /* FavouritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCollectionViewCell.swift; sourceTree = "<group>"; };
 		0CEEBA25212C23480019CB3D /* FavouritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewController.swift; sourceTree = "<group>"; };
 		0CEEBA27212C23A00019CB3D /* FavouritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,8 +100,8 @@
 			children = (
 				0CEEBA25212C23480019CB3D /* FavouritesTableViewController.swift */,
 				0CEEBA27212C23A00019CB3D /* FavouritesTableViewCell.swift */,
-				0CEEBA21212C232D0019CB3D /* FavoritesCollectionView.swift */,
-				0CEEBA23212C23390019CB3D /* FavoritesCollectionViewCell.swift */,
+				0CEEBA21212C232D0019CB3D /* FavouritesCollectionViewController.swift */,
+				0CEEBA23212C23390019CB3D /* FavouritesCollectionViewCell.swift */,
 			);
 			path = Favourites;
 			sourceTree = "<group>";
@@ -230,10 +230,10 @@
 				0CE3D3C8212C3F550000BFFC /* APIMarvelCharacter.swift in Sources */,
 				0CE3D3D0212C5B2B0000BFFC /* ConstantsMarvel.swift in Sources */,
 				0CEEBA15212B48B50019CB3D /* MarvelOus.xcdatamodeld in Sources */,
-				0CEEBA22212C232D0019CB3D /* FavoritesCollectionView.swift in Sources */,
+				0CEEBA22212C232D0019CB3D /* FavouritesCollectionViewController.swift in Sources */,
 				0CE3D3CC212C52330000BFFC /* CharacterSearchViewController.swift in Sources */,
 				0CE3D3CE212C52560000BFFC /* CharacterSearchCellItem.swift in Sources */,
-				0CEEBA24212C23390019CB3D /* FavoritesCollectionViewCell.swift in Sources */,
+				0CEEBA24212C23390019CB3D /* FavouritesCollectionViewCell.swift in Sources */,
 				0CEEBA0D212B48B50019CB3D /* AppDelegate.swift in Sources */,
 				0C0C1B06212C94E700D43B4B /* DataBaseController.swift in Sources */,
 				0CEEBA28212C23A00019CB3D /* FavouritesTableViewCell.swift in Sources */,

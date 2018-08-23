@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class FavoritesCollectionView: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class FavouritesCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     //TODO: not repeat favorite chars
     @IBOutlet weak var collectionView: UICollectionView!
     private var fetchedRC: NSFetchedResultsController<Character>!
@@ -38,7 +38,7 @@ class FavoritesCollectionView: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! FavoritesCollectionViewCell
+         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! FavouritesCollectionViewCell
         let fetchedObject = fetchedRC.object(at: indexPath)
         
         cell.characterName.text = fetchedObject.name

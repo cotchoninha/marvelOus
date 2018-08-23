@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FavoritesCollectionViewCell: UICollectionViewCell {
+class FavouritesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var characterPhoto: UIImageView!
     
