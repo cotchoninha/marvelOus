@@ -57,7 +57,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C0C1B07212C94F100D43B4B /* Favorites */ = {
+		0C0C1B07212C94F100D43B4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C685088212EC77B00CA8E87 /* Favourites */,
+				0C685087212EC77900CA8E87 /* Search */,
+				0C685086212EC76D00CA8E87 /* Detail */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C0C1B08212C951100D43B4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0C685089212EC7B700CA8E87 /* Network */,
+				0C68508A212EC7BE00CA8E87 /* CoreData */,
+				0C0C1B05212C94E700D43B4B /* DataBaseController.swift */,
+				0CEEBA13212B48B50019CB3D /* MarvelOus.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0C685086212EC76D00CA8E87 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				0CE3D3C9212C480F0000BFFC /* DetailCharacterView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		0C685087212EC77900CA8E87 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				0CE3D3CB212C52330000BFFC /* SearchCharacterView.swift */,
+				0CE3D3CD212C52560000BFFC /* CharacterSearchedCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		0C685088212EC77B00CA8E87 /* Favourites */ = {
 			isa = PBXGroup;
 			children = (
 				0CEEBA25212C23480019CB3D /* FavoritesTableView.swift */,
@@ -65,28 +103,23 @@
 				0CEEBA21212C232D0019CB3D /* FavoritesCollectionView.swift */,
 				0CEEBA23212C23390019CB3D /* FavoritesCollectionViewCell.swift */,
 			);
-			path = Favorites;
+			path = Favourites;
 			sourceTree = "<group>";
 		};
-		0C0C1B08212C951100D43B4B /* Model */ = {
+		0C685089212EC7B700CA8E87 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				0CEEBA0C212B48B50019CB3D /* AppDelegate.swift */,
 				0CEEBA0E212B48B50019CB3D /* RequestManager.swift */,
-				0CE3D3CF212C5B2B0000BFFC /* ConstantsMarvel.swift */,
-				0C0C1B05212C94E700D43B4B /* DataBaseController.swift */,
+				0CE3D3C7212C3F550000BFFC /* CharacterStruct.swift */,
 			);
-			path = Model;
+			path = Network;
 			sourceTree = "<group>";
 		};
-		0C0C1B09212C953000D43B4B /* Search and Detail */ = {
+		0C68508A212EC7BE00CA8E87 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				0CE3D3CB212C52330000BFFC /* SearchCharacterView.swift */,
-				0CE3D3CD212C52560000BFFC /* CharacterSearchedCell.swift */,
-				0CE3D3C9212C480F0000BFFC /* DetailCharacterView.swift */,
 			);
-			path = "Search and Detail";
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		0CEEBA00212B48B50019CB3D = {
@@ -108,15 +141,14 @@
 		0CEEBA0B212B48B50019CB3D /* MarvelOus */ = {
 			isa = PBXGroup;
 			children = (
-				0CE3D3C7212C3F550000BFFC /* CharacterStruct.swift */,
-				0C0C1B09212C953000D43B4B /* Search and Detail */,
+				0CEEBA0C212B48B50019CB3D /* AppDelegate.swift */,
+				0CE3D3CF212C5B2B0000BFFC /* ConstantsMarvel.swift */,
 				0C0C1B08212C951100D43B4B /* Model */,
-				0C0C1B07212C94F100D43B4B /* Favorites */,
+				0C0C1B07212C94F100D43B4B /* View */,
 				0CEEBA10212B48B50019CB3D /* Main.storyboard */,
 				0CEEBA16212B48B70019CB3D /* Assets.xcassets */,
 				0CEEBA18212B48B70019CB3D /* LaunchScreen.storyboard */,
 				0CEEBA1B212B48B70019CB3D /* Info.plist */,
-				0CEEBA13212B48B50019CB3D /* MarvelOus.xcdatamodeld */,
 			);
 			path = MarvelOus;
 			sourceTree = "<group>";
