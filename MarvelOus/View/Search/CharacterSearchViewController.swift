@@ -85,7 +85,9 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! CharacterDetailsViewController
-        controller.character = self.arrayofChars[indexPath.item]
+        let selectedCharacter = self.arrayofChars[indexPath.item]
+        let favoriteCharacterDetailed = UIMarvelCharacter(characterName: selectedCharacter.name, characterPhoto: selectedCharacter.characterPhoto!, characterDescription: selectedCharacter.description)
+        controller.marvelCharacter = favoriteCharacterDetailed
         self.present(controller, animated: true, completion: nil)
     }
 }

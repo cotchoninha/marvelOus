@@ -50,10 +50,8 @@ class FavouritesCollectionViewController: UIViewController, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! CharacterDetailsViewController
-        let characterSelected = fetchedRC.object(at: indexPath)
-        print("MARCELA: FETCHEDREQUEST \(characterSelected.charDescription)")
-
-        let favoriteCharacterDetailed = UIMarvelCharacter(characterName: characterSelected.name!, characterPhoto: characterSelected.photoImage!, characterDescription: characterSelected.charDescription!)
+        let selectedCharacter = fetchedRC.object(at: indexPath)
+        let favoriteCharacterDetailed = UIMarvelCharacter(characterName: selectedCharacter.name!, characterPhoto: selectedCharacter.photoImage!, characterDescription: selectedCharacter.charDescription!)
             controller.marvelCharacter = favoriteCharacterDetailed
         self.present(controller, animated: true, completion: nil)
     }

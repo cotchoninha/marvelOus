@@ -50,6 +50,9 @@ class FavouritesTableViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! CharacterDetailsViewController
+        let characterSelected = fetchedRC.object(at: indexPath)
+        let favoriteCharacterDetailed = UIMarvelCharacter(characterName: characterSelected.name!, characterPhoto: characterSelected.photoImage!, characterDescription: characterSelected.charDescription!)
+        controller.marvelCharacter = favoriteCharacterDetailed
         self.present(controller, animated: true, completion: nil)
     }
     
