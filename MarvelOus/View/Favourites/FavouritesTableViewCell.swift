@@ -16,4 +16,10 @@ class FavouritesTableViewCell: UITableViewCell {
     @IBOutlet weak var characterName: UILabel!
     
     @IBOutlet weak var favoriteButton: UIButton!
+    
+    var buttonAction: (() -> Void)?
+    
+    @IBAction func defavoriteCharacter(_ sender: Any) {
+        self.buttonAction?()
+    }
 }

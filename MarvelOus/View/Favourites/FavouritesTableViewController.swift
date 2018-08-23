@@ -49,6 +49,16 @@ class FavouritesTableViewController: UIViewController, UITableViewDelegate, UITa
         if let photoImage = fetchedObject.photoImage{
             cell.characterPhoto.image = UIImage(data: photoImage)
         }
+        
+        cell.buttonAction = {
+            if let index = tableView.indexPath(for: cell){
+                let objectToDelete = self.fetchedRC.object(at: index)
+                DataBaseController.getContext().delete(objectToDelete)
+                DataBaseController.saveContext()
+                self.fetchCharactersInDB()
+                tableView.deleteRows(at: [index], with: .top)
+            }
+        }
         return cell
     }
     

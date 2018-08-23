@@ -254,6 +254,9 @@
                                                         <constraint firstAttribute="width" constant="32" id="ueL-UP-oQw"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="defavoriteCharacter:" destination="HXb-NW-E0b" eventType="touchUpInside" id="fnz-Cl-5wT"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

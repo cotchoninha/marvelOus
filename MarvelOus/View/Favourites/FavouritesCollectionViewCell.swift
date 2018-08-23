@@ -17,7 +17,6 @@ class FavouritesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var favoriteButton: UIButton!
     
-//    var buttonAction: (() -> Void)?
     var buttonAction: (() -> Void)?
     
     @IBAction func defavoriteCharacter(_ sender: Any) {
