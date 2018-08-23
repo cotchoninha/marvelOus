@@ -38,13 +38,15 @@ class FavouritesCollectionViewController: UIViewController, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! FavouritesCollectionViewCell
+        let myImage = UIImage(named: "heart")
+        cell.favoriteButton.setImage(myImage?.withRenderingMode(.alwaysTemplate), for: .normal)
+        cell.favoriteButton.tintColor = .red
         let fetchedObject = fetchedRC.object(at: indexPath)
         
         cell.characterName.text = fetchedObject.name
         if let photoImage = fetchedObject.photoImage{
             cell.characterPhoto.image = UIImage(data: photoImage)
         }
-        cell.favoriteButton.tintColor = .blue
         return cell
     }
     

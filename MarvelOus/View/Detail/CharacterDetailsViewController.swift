@@ -14,6 +14,7 @@ class CharacterDetailsViewController: UIViewController {
     
     var marvelCharacter: UIMarvelCharacter?
     private var fetchedRC: NSFetchedResultsController<Character>!
+//    var favouriteSelectedObject = NSManagedObject(entity: Character.entity(), insertInto: DataBaseController.getContext())
     
     @IBOutlet weak var characterPhoto: UIImageView!
     @IBOutlet weak var characterName: UILabel!
@@ -22,12 +23,19 @@ class CharacterDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.favoriteButton.setBackgroundImage(#imageLiteral(resourceName: "heart"), for: .normal)
+        let myImage = UIImage(named: "heart")
+        self.favoriteButton.setImage(myImage?.withRenderingMode(.alwaysTemplate), for: .normal)
         if let marvelCharacter = self.marvelCharacter{
             characterPhoto.image = UIImage(data: marvelCharacter.characterPhoto)
             characterName.text = marvelCharacter.characterName
             characterDescription.text = marvelCharacter.characterDescription
             fetchCharacterWithId(characterId: marvelCharacter.characterId)
+            if marvelCharacter.isFavorite == false{
+                self.favoriteButton.tintColor = .black
+            }else{
+                self.favoriteButton.tintColor = .red
+
+            }
         }
     }
     
@@ -57,7 +65,9 @@ class CharacterDetailsViewController: UIViewController {
                 }else if !fetchedObject.isEmpty && marvelCharacter.isFavorite == true{
                     self.dismiss(animated: true, completion: nil)
                 }else if !fetchedObject.isEmpty && marvelCharacter.isFavorite == false{
-                    //deleta do banco de dados
+                    for character in fetchedObject {
+                        DataBaseController.getContext().delete(character)
+                    }
                 }
             }
         }
@@ -66,13 +76,13 @@ class CharacterDetailsViewController: UIViewController {
     }
     
     @IBAction func setFavourite(_ sender: Any) {
-        if var marvelCharacter = self.marvelCharacter{
+        if let marvelCharacter = self.marvelCharacter{
             if marvelCharacter.isFavorite{
                 self.marvelCharacter?.isFavorite = false
-                self.favoriteButton.setBackgroundImage(#imageLiteral(resourceName: "heart"), for: .normal)
+                self.favoriteButton.tintColor = .black
             }else{
                 self.marvelCharacter?.isFavorite = true
-                self.favoriteButton.setBackgroundImage(#imageLiteral(resourceName: "redheart"), for: .normal)
+                self.favoriteButton.tintColor = .red
             }
         }
     }

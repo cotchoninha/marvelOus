@@ -87,8 +87,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzb-cW-GeL">
-                                                    <rect key="frame" x="139" y="181" width="32" height="32"/>
-                                                    <state key="normal" image="heart"/>
+                                                    <rect key="frame" x="141" y="179" width="30" height="34"/>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -177,7 +176,7 @@
                                     <action selector="setFavourite:" destination="616-SY-CL9" eventType="touchUpInside" id="kTW-Ht-VQ1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fI-O4-dII">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fI-O4-dII">
                                 <rect key="frame" x="16" y="579" width="343" height="80"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
@@ -251,7 +250,7 @@
                                                         <constraint firstAttribute="height" constant="32" id="50L-0I-gPW"/>
                                                         <constraint firstAttribute="width" constant="32" id="ueL-UP-oQw"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button" image="heart"/>
+                                                    <state key="normal" title="Button"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
