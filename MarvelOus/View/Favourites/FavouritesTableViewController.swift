@@ -31,7 +31,6 @@ class FavouritesTableViewController: UIViewController, UITableViewDelegate, UITa
         super.viewWillAppear(animated)
         fetchCharactersInDB()
         tableView.reloadData()
-        print("MARCELA: FETCHEDREQUEST \(fetchedRC.fetchedObjects)")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

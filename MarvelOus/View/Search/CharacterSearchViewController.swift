@@ -70,7 +70,6 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
                 cell.characterPhoto.image = UIImage(data: photoChar)
             }
         }
-        print("MARCELA: ARRAY: \(arrayofChars)")
         cell.buttonAction = {
             let character = Character(context: DataBaseController.getContext())
             character.id = Int32(self.arrayofChars[indexPath.item].id)

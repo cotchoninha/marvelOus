@@ -12,16 +12,15 @@ import UIKit
 class CharacterDetailsViewController: UIViewController {
     
     var character: APIMarvelCharacter?
+    var marvelCharacter: UIMarvelCharacter?
     var isFavourite = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let character = self.character{
-            if let photoChar = character.characterPhoto{
-                characterPhoto.image = UIImage(data: photoChar)
-            }
-            characterName.text = character.name
-            characterDescription.text = character.description
+        if let marvelCharacter = self.marvelCharacter{
+            characterPhoto.image = UIImage(data: marvelCharacter.characterPhoto)
+            characterName.text = marvelCharacter.characterName
+            characterDescription.text = marvelCharacter.characterDescription
         }
     }
     
