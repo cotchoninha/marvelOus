@@ -11,7 +11,7 @@ import CoreData
 
 class SearchCharacterView: UIViewController {
     
-    var arrayofChars = [MarvelCharacter]()
+    var arrayofChars = [APIMarvelCharacter]()
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!

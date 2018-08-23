@@ -11,7 +11,7 @@ import UIKit
 
 class DetailCharacterView: UIViewController {
     
-    var character: MarvelCharacter?
+    var character: APIMarvelCharacter?
     var isFavourite = false
     
     override func viewWillAppear(_ animated: Bool) {

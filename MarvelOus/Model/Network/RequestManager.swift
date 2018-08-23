@@ -18,7 +18,7 @@ class MarvelRequestManager: NSObject{
         return Singleton.sharedInstance
     }
     
-    func getAllMarvelCharacters(_ completionHandlerForGETMARVEL: @escaping (_ success: Bool, _ imagesArray: [MarvelCharacter]?, _ error: Error?) -> Void) {
+    func getAllMarvelCharacters(_ completionHandlerForGETMARVEL: @escaping (_ success: Bool, _ imagesArray: [APIMarvelCharacter]?, _ error: Error?) -> Void) {
         
         let methodParameters = [Constants.MarvelParameterKeys.APIPublicKey: Constants.MarvelParameterValues.APIPublicKey, Constants.MarvelParameterKeys.Hash: Constants.MarvelParameterValues.Hash,  Constants.MarvelParameterKeys.Limit: Constants.MarvelParameterValues.Limit, Constants.MarvelParameterKeys.Ts: Constants.MarvelParameterValues.Ts] as [String : Any]
         
@@ -77,13 +77,13 @@ class MarvelRequestManager: NSObject{
                 displayError("Cannot find keys '\(Constants.MarvelResponseKeys.Data)' and '\(Constants.MarvelResponseKeys.Results)' in \(parsedResult)")
                 return
             }
-            var charactersArray = [MarvelCharacter]()
+            var charactersArray = [APIMarvelCharacter]()
             for item in results{
                 guard let id = item[Constants.MarvelResponseKeys.Id], let name = item[Constants.MarvelResponseKeys.Name], let description = item[Constants.MarvelResponseKeys.Description], let thumbnail = item[Constants.MarvelResponseKeys.Thumbnail], let path = thumbnail[Constants.MarvelResponseKeys.Path], let imgExtension = thumbnail[Constants.MarvelResponseKeys.ImgExtension] else{
                     displayError("Cannot find values")
                     return
                 }
-                charactersArray.append(MarvelCharacter(id: id as! Int, name: name as! String, description: description as! String, path: path as! String, imgExtension: imgExtension as! String, characterPhoto: nil))
+                charactersArray.append(APIMarvelCharacter(id: id as! Int, name: name as! String, description: description as! String, path: path as! String, imgExtension: imgExtension as! String, characterPhoto: nil))
                 
             }
             print("MARCELA: charactersArray \(charactersArray)")
@@ -93,7 +93,7 @@ class MarvelRequestManager: NSObject{
         
     }
     
-    func getMarvelCharacters(nameStartsWith: String?, _ completionHandlerForGETMARVEL: @escaping (_ success: Bool, _ imagesArray: [MarvelCharacter]?, _ error: Error?) -> Void) {
+    func getMarvelCharacters(nameStartsWith: String?, _ completionHandlerForGETMARVEL: @escaping (_ success: Bool, _ imagesArray: [APIMarvelCharacter]?, _ error: Error?) -> Void) {
         
         let methodParameters = [Constants.MarvelParameterKeys.APIPublicKey: Constants.MarvelParameterValues.APIPublicKey, Constants.MarvelParameterKeys.Hash: Constants.MarvelParameterValues.Hash,  Constants.MarvelParameterKeys.Limit: Constants.MarvelParameterValues.Limit, Constants.MarvelParameterKeys.NameStartsWith: (nameStartsWith ?? nil), Constants.MarvelParameterKeys.Ts: Constants.MarvelParameterValues.Ts] as [String : Any]
         
@@ -146,13 +146,13 @@ class MarvelRequestManager: NSObject{
                 displayError("Cannot find keys '\(Constants.MarvelResponseKeys.Data)' and '\(Constants.MarvelResponseKeys.Results)' in \(parsedResult)")
                 return
             }
-            var charactersArray = [MarvelCharacter]()
+            var charactersArray = [APIMarvelCharacter]()
             for item in results{
                 guard let id = item[Constants.MarvelResponseKeys.Id], let name = item[Constants.MarvelResponseKeys.Name], let description = item[Constants.MarvelResponseKeys.Description], let thumbnail = item[Constants.MarvelResponseKeys.Thumbnail], let path = thumbnail[Constants.MarvelResponseKeys.Path], let imgExtension = thumbnail[Constants.MarvelResponseKeys.ImgExtension] else{
                     displayError("Cannot find values")
                     return
                 }
-                charactersArray.append(MarvelCharacter(id: id as! Int, name: name as! String, description: description as! String, path: path as! String, imgExtension: imgExtension as! String, characterPhoto: nil))
+                charactersArray.append(APIMarvelCharacter(id: id as! Int, name: name as! String, description: description as! String, path: path as! String, imgExtension: imgExtension as! String, characterPhoto: nil))
                 
             }
             print("MARCELA: charactersArray \(charactersArray)")
@@ -185,7 +185,7 @@ class MarvelRequestManager: NSObject{
         }
     }
     
-    func parseDataWithCodable(data: Data) -> [MarvelCharacter]? {
+    func parseDataWithCodable(data: Data) -> [APIMarvelCharacter]? {
         
         let jsonDecoder = JSONDecoder()
         do{
