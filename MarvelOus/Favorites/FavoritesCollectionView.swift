@@ -8,20 +8,44 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class FavoritesCollectionView: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    //TODO: not repeat favorite chars
+    @IBOutlet weak var collectionView: UICollectionView!
+    private var fetchedRC: NSFetchedResultsController<Character>!
     
-    var charactersArray: [MarvelCharacter] = [MarvelCharacter(id: 1, name: "SpiderMan", description: "Homem Aranha", path: "", imgExtension: "", characterPhoto: nil), MarvelCharacter(id: 2, name: "IronMan", description: "Homem de Ferro", path: "", imgExtension: "", characterPhoto: nil), MarvelCharacter(id: 3, name: "Ant Man", description: "Homem Formiga", path: "", imgExtension: "", characterPhoto: nil), MarvelCharacter(id: 4, name: "Captain America", description: "Capitão América", path: "", imgExtension: "", characterPhoto: nil)]
+    fileprivate func fetchCharactersInDB() {
+        let request: NSFetchRequest<Character> = Character.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Character.name), ascending: true)]
+        do {
+            fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: DataBaseController.getContext(), sectionNameKeyPath: nil, cacheName: nil)
+            try fetchedRC.performFetch()
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchCharactersInDB()
+        collectionView.reloadData()
+        print("MARCELA: FETCHEDREQUEST \(fetchedRC.fetchedObjects)")
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return charactersArray.count
+        return fetchedRC.fetchedObjects?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! FavoritesCollectionViewCell
-        cell.characterName.text = charactersArray[indexPath.row].name
+        let fetchedObject = fetchedRC.object(at: indexPath)
+        
+        cell.characterName.text = fetchedObject.name
+        if let photoImage = fetchedObject.photoImage{
+            cell.characterPhoto.image = UIImage(data: photoImage)
+        }
         cell.favoriteButton.tintColor = .blue
-        cell.characterPhoto.image = #imageLiteral(resourceName: "placeholder")
         return cell
     }
     

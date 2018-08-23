@@ -12,6 +12,7 @@ import UIKit
 class DetailCharacterView: UIViewController {
     
     var character: MarvelCharacter?
+    var isFavourite = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,7 +34,28 @@ class DetailCharacterView: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     
     @IBAction func backToTab(_ sender: Any) {
+        if isFavourite{
+            let character = Character(context: DataBaseController.getContext())
+            if let marvelCharacter = self.character{
+                character.id = Int32(marvelCharacter.id)
+                character.charDescription = marvelCharacter.description
+                character.name = marvelCharacter.name
+                character.photoImage = marvelCharacter.characterPhoto
+                character.path = marvelCharacter.path
+                character.imgExtension = marvelCharacter.imgExtension
+            }
+            DataBaseController.saveContext()
+        }
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func setFavourite(_ sender: Any) {
+        if !isFavourite{
+            isFavourite = true
+        }else{
+            isFavourite = false
+        }
+        
     }
     
 }

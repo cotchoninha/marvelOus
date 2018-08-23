@@ -29,7 +29,7 @@ struct Constants {
         static let APIPublicKey = "f46b026b0934a8cb453cf647d4168905"
         static let Hash = "247e3aecb47579e933d7b66d2e06d453"
         static let Ts = 1
-        static let Limit = 100
+        static let Limit = 50
     }
     
     // MARK: Flickr Response Keys

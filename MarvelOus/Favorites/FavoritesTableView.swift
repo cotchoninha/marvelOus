@@ -8,24 +8,44 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class FavoritesTableView: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    var charactersArray: [MarvelCharacter] = [MarvelCharacter(id: 1, name: "SpiderMan", description: "Homem Aranha", path: "", imgExtension: "", characterPhoto: nil), MarvelCharacter(id: 2, name: "IronMan", description: "Homem de Ferro", path: "", imgExtension: "", characterPhoto: nil), MarvelCharacter(id: 3, name: "Ant Man", description: "Homem Formiga", path: "", imgExtension: "", characterPhoto: nil), MarvelCharacter(id: 4, name: "Captain America", description: "Capitão América", path: "", imgExtension: "", characterPhoto: nil)]
+    private var fetchedRC: NSFetchedResultsController<Character>!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    @IBOutlet weak var tableView: UITableView!
+    
+    fileprivate func fetchCharactersInDB() {
+        let request: NSFetchRequest<Character> = Character.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Character.name), ascending: true)]
+        do {
+            fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: DataBaseController.getContext(), sectionNameKeyPath: nil, cacheName: nil)
+            try fetchedRC.performFetch()
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchCharactersInDB()
+        tableView.reloadData()
+        print("MARCELA: FETCHEDREQUEST \(fetchedRC.fetchedObjects)")
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return charactersArray.count
+        return fetchedRC.fetchedObjects?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! FavoritesTableViewCell
-        cell.characterName.text = charactersArray[indexPath.row].name
+        let fetchedObject = fetchedRC.object(at: indexPath)
+        cell.characterName.text = fetchedObject.name
+        if let photoImage = fetchedObject.photoImage{
+            cell.characterPhoto.image = UIImage(data: photoImage)
+        }
         cell.favoriteButton.tintColor = .blue
-        cell.characterPhoto.image = #imageLiteral(resourceName: "placeholder")
         return cell
     }
     
