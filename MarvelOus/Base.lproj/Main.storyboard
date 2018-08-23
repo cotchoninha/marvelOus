@@ -169,10 +169,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dg4-yA-1PU">
-                                <rect key="frame" x="313" y="483" width="32" height="32"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dg4-yA-1PU">
+                                <rect key="frame" x="314" y="482" width="30" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="heart"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="setFavourite:" destination="616-SY-CL9" eventType="touchUpInside" id="kTW-Ht-VQ1"/>
                                 </connections>
@@ -211,7 +211,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wml-Zc-ZzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="335" y="-1148"/>
+            <point key="canvasLocation" x="333.60000000000002" y="-1148.2758620689656"/>
         </scene>
         <!--Item-->
         <scene sceneID="Ie0-ss-Gp5">
@@ -246,7 +246,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCX-Bj-JVY">
-                                                    <rect key="frame" x="560" y="23" width="32" height="32"/>
+                                                    <rect key="frame" x="335" y="23" width="32" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="50L-0I-gPW"/>
                                                         <constraint firstAttribute="width" constant="32" id="ueL-UP-oQw"/>

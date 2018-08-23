@@ -10,7 +10,9 @@ import Foundation
 
 //UIMarvelCharacter will contain only the properties needed to be exibited on the DetailVC through CoreData or Network response
 struct UIMarvelCharacter {
+    var characterId: Int
     var characterName: String
     var characterPhoto: Data
     var characterDescription: String
+    var isFavorite: Bool
 }

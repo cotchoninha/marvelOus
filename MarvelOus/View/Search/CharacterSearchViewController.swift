@@ -75,8 +75,6 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
             character.id = Int32(self.arrayofChars[indexPath.item].id)
             character.charDescription = self.arrayofChars[indexPath.item].description
             character.name = self.arrayofChars[indexPath.item].name
-            character.path = self.arrayofChars[indexPath.item].path
-            character.imgExtension = self.arrayofChars[indexPath.item].imgExtension
             character.photoImage = self.arrayofChars[indexPath.item].characterPhoto
             DataBaseController.saveContext()
         }
@@ -86,7 +84,8 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! CharacterDetailsViewController
         let selectedCharacter = self.arrayofChars[indexPath.item]
-        let favoriteCharacterDetailed = UIMarvelCharacter(characterName: selectedCharacter.name, characterPhoto: selectedCharacter.characterPhoto!, characterDescription: selectedCharacter.description)
+        let favoriteCharacterDetailed = UIMarvelCharacter(characterId: Int(selectedCharacter.id), characterName: selectedCharacter.name, characterPhoto: selectedCharacter.characterPhoto!, characterDescription: selectedCharacter.description, isFavorite: false)
+        //TODO: verify is char is favorite
         controller.marvelCharacter = favoriteCharacterDetailed
         self.present(controller, animated: true, completion: nil)
     }

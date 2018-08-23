@@ -8,53 +8,73 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class CharacterDetailsViewController: UIViewController {
     
-    var character: APIMarvelCharacter?
     var marvelCharacter: UIMarvelCharacter?
-    var isFavourite = false
+    private var fetchedRC: NSFetchedResultsController<Character>!
+    
+    @IBOutlet weak var characterPhoto: UIImageView!
+    @IBOutlet weak var characterName: UILabel!
+    @IBOutlet weak var characterDescription: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.favoriteButton.setBackgroundImage(#imageLiteral(resourceName: "heart"), for: .normal)
         if let marvelCharacter = self.marvelCharacter{
             characterPhoto.image = UIImage(data: marvelCharacter.characterPhoto)
             characterName.text = marvelCharacter.characterName
             characterDescription.text = marvelCharacter.characterDescription
+            fetchCharacterWithId(characterId: marvelCharacter.characterId)
         }
     }
     
-    @IBOutlet weak var characterPhoto: UIImageView!
-    
-    @IBOutlet weak var characterName: UILabel!
-    
-    @IBOutlet weak var characterDescription: UILabel!
-    
-    @IBOutlet weak var favoriteButton: UIButton!
+    fileprivate func fetchCharacterWithId(characterId: Int) {
+        let request: NSFetchRequest<Character> = Character.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Character.name), ascending: true)]
+        request.predicate = NSPredicate(format: "id == %i", characterId)
+        do {
+            fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: DataBaseController.getContext(), sectionNameKeyPath: nil, cacheName: nil)
+            try fetchedRC.performFetch()
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
     
     @IBAction func backToTab(_ sender: Any) {
-        if isFavourite{
-            let character = Character(context: DataBaseController.getContext())
-            if let marvelCharacter = self.character{
-                character.id = Int32(marvelCharacter.id)
-                character.charDescription = marvelCharacter.description
-                character.name = marvelCharacter.name
-                character.photoImage = marvelCharacter.characterPhoto
-                character.path = marvelCharacter.path
-                character.imgExtension = marvelCharacter.imgExtension
+        if let fetchedObject = fetchedRC.fetchedObjects{
+            if let marvelCharacter = self.marvelCharacter{
+                if fetchedObject.isEmpty && marvelCharacter.isFavorite == true{
+                    let character = Character(context: DataBaseController.getContext())
+                    character.id = Int32(marvelCharacter.characterId)
+                    character.charDescription = marvelCharacter.characterDescription
+                    character.name = marvelCharacter.characterName
+                    character.photoImage = marvelCharacter.characterPhoto
+                }else if fetchedObject.isEmpty && marvelCharacter.isFavorite == false{
+                    self.dismiss(animated: true, completion: nil)
+                }else if !fetchedObject.isEmpty && marvelCharacter.isFavorite == true{
+                    self.dismiss(animated: true, completion: nil)
+                }else if !fetchedObject.isEmpty && marvelCharacter.isFavorite == false{
+                    //deleta do banco de dados
+                }
             }
-            DataBaseController.saveContext()
         }
+        DataBaseController.saveContext()
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func setFavourite(_ sender: Any) {
-        if !isFavourite{
-            isFavourite = true
-        }else{
-            isFavourite = false
+        if var marvelCharacter = self.marvelCharacter{
+            if marvelCharacter.isFavorite{
+                self.marvelCharacter?.isFavorite = false
+                self.favoriteButton.setBackgroundImage(#imageLiteral(resourceName: "heart"), for: .normal)
+            }else{
+                self.marvelCharacter?.isFavorite = true
+                self.favoriteButton.setBackgroundImage(#imageLiteral(resourceName: "redheart"), for: .normal)
+            }
         }
-        
     }
     
 }
