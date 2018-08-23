@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class FavoritesTableView: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class FavouritesTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     private var fetchedRC: NSFetchedResultsController<Character>!
     
@@ -39,7 +39,7 @@ class FavoritesTableView: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! FavoritesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! FavouritesTableViewCell
         let fetchedObject = fetchedRC.object(at: indexPath)
         cell.characterName.text = fetchedObject.name
         if let photoImage = fetchedObject.photoImage{

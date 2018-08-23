@@ -21,8 +21,8 @@
 		0CEEBA1A212B48B70019CB3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEBA18212B48B70019CB3D /* LaunchScreen.storyboard */; };
 		0CEEBA22212C232D0019CB3D /* FavoritesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA21212C232D0019CB3D /* FavoritesCollectionView.swift */; };
 		0CEEBA24212C23390019CB3D /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA23212C23390019CB3D /* FavoritesCollectionViewCell.swift */; };
-		0CEEBA26212C23480019CB3D /* FavoritesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA25212C23480019CB3D /* FavoritesTableView.swift */; };
-		0CEEBA28212C23A00019CB3D /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA27212C23A00019CB3D /* FavoritesTableViewCell.swift */; };
+		0CEEBA26212C23480019CB3D /* FavouritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA25212C23480019CB3D /* FavouritesTableViewController.swift */; };
+		0CEEBA28212C23A00019CB3D /* FavouritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEBA27212C23A00019CB3D /* FavouritesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +42,8 @@
 		0CEEBA1B212B48B70019CB3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CEEBA21212C232D0019CB3D /* FavoritesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionView.swift; sourceTree = "<group>"; };
 		0CEEBA23212C23390019CB3D /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
-		0CEEBA25212C23480019CB3D /* FavoritesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableView.swift; sourceTree = "<group>"; };
-		0CEEBA27212C23A00019CB3D /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		0CEEBA25212C23480019CB3D /* FavouritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewController.swift; sourceTree = "<group>"; };
+		0CEEBA27212C23A00019CB3D /* FavouritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +98,8 @@
 		0C685088212EC77B00CA8E87 /* Favourites */ = {
 			isa = PBXGroup;
 			children = (
-				0CEEBA25212C23480019CB3D /* FavoritesTableView.swift */,
-				0CEEBA27212C23A00019CB3D /* FavoritesTableViewCell.swift */,
+				0CEEBA25212C23480019CB3D /* FavouritesTableViewController.swift */,
+				0CEEBA27212C23A00019CB3D /* FavouritesTableViewCell.swift */,
 				0CEEBA21212C232D0019CB3D /* FavoritesCollectionView.swift */,
 				0CEEBA23212C23390019CB3D /* FavoritesCollectionViewCell.swift */,
 			);
@@ -225,7 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CEEBA0F212B48B50019CB3D /* RequestManager.swift in Sources */,
-				0CEEBA26212C23480019CB3D /* FavoritesTableView.swift in Sources */,
+				0CEEBA26212C23480019CB3D /* FavouritesTableViewController.swift in Sources */,
 				0CE3D3CA212C480F0000BFFC /* CharacterDetailsViewController.swift in Sources */,
 				0CE3D3C8212C3F550000BFFC /* APIMarvelCharacter.swift in Sources */,
 				0CE3D3D0212C5B2B0000BFFC /* ConstantsMarvel.swift in Sources */,
@@ -236,7 +236,7 @@
 				0CEEBA24212C23390019CB3D /* FavoritesCollectionViewCell.swift in Sources */,
 				0CEEBA0D212B48B50019CB3D /* AppDelegate.swift in Sources */,
 				0C0C1B06212C94E700D43B4B /* DataBaseController.swift in Sources */,
-				0CEEBA28212C23A00019CB3D /* FavoritesTableViewCell.swift in Sources */,
+				0CEEBA28212C23A00019CB3D /* FavouritesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
