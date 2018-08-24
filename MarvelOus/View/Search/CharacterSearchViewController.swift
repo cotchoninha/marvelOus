@@ -30,6 +30,7 @@ class CharacterSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("marcela view didLoad")
         fetchCharactersInDB()
         activityIndicator.startAnimating()
         MarvelRequestManager.sharedInstance().getAllMarvelCharacters() { (success, arrayOfCharacters, error) in
@@ -46,6 +47,14 @@ class CharacterSearchViewController: UIViewController {
                 print("Couldn't get Marvel's Characters: \(error?.localizedDescription)")
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("marcela view will appear")
+        fetchCharactersInDB()
+        collectionView.reloadData()
+        
     }
 }
 
