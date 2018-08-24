@@ -34,7 +34,9 @@ class CharacterSearchViewController: UIViewController {
         MarvelRequestManager.sharedInstance().getAllMarvelCharacters(offSet: offSetBy) { (success, arrayOfCharacters, totalNumberOfCharacters, error) in
             if success{
                 if let arrayOfCharacters = arrayOfCharacters{
-                    self.arrayofChars = arrayOfCharacters
+                    for item in arrayOfCharacters{
+                        self.arrayofChars.append(item)
+                    }
                 }
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
@@ -57,18 +59,6 @@ class CharacterSearchViewController: UIViewController {
         fetchCharactersInDB()
         activityIndicator.startAnimating()
         makeRequest(offSetBy: offSet)
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(self.refresh), for: UIControlEvents.valueChanged)
-        collectionView.refreshControl  = refreshControl
-    }
-    
-    @objc func refresh(){
-        arrayofChars.removeAll()
-        collectionView.reloadData()
-        makeRequest(offSetBy: offSet)
-        collectionView.reloadData()
-        collectionView.refreshControl?.endRefreshing()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +66,25 @@ class CharacterSearchViewController: UIViewController {
         //when returned from DetailVC needs to check again what is in the DB to design UI with correct heart colours
         fetchCharactersInDB()
         collectionView.reloadData()
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.offSet = 0 
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let contentOffset = scrollView.contentOffset.y;
+        let contentHeight = scrollView.contentSize.height;
+        let diffHeight = contentHeight - contentOffset;
+        let frameHeight = scrollView.bounds.size.height;
+        let pullHeight  = fabs(diffHeight - frameHeight);
+        print("pullHeight:\(pullHeight)");
+        if pullHeight == 0.0
+        {
+            makeRequest(offSetBy: offSet)
+            collectionView.reloadData()
+        }
     }
 }
 
