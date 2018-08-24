@@ -57,17 +57,18 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! CharacterSearchCellItem
+        
+        //set button red or black depending on be already saved on DB
         let myImage = UIImage(named: "heart")
         cell.favoriteButton.setImage(myImage?.withRenderingMode(.alwaysTemplate), for: .normal)
-        // se if arrayofChars[indexPath.item].id (item daquela célula) bater com o Id de algum dos itens dentro de fetchedObjects seta tint pra red
-        let idOfItem = arrayofChars[indexPath.item].id
         if let objects = fetchedRC.fetchedObjects{
-            if objects.contains(where: {$0.id == idOfItem}){
+            if objects.contains(where: {$0.id == arrayofChars[indexPath.item].id}){
                 cell.favoriteButton.tintColor = .red
             }else{
                 cell.favoriteButton.tintColor = .black
             }
         }
+        
         cell.characterName.text = arrayofChars[indexPath.item].name
         if arrayofChars[indexPath.item].characterPhoto == nil{
             cell.characterPhoto.image = #imageLiteral(resourceName: "placeholder")
@@ -94,12 +95,24 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
             }
         }
         cell.buttonAction = {
-            let character = Character(context: DataBaseController.getContext())
-            character.id = Int32(self.arrayofChars[indexPath.item].id)
-            character.charDescription = self.arrayofChars[indexPath.item].description
-            character.name = self.arrayofChars[indexPath.item].name
-            character.photoImage = self.arrayofChars[indexPath.item].characterPhoto
-            DataBaseController.saveContext()
+            if cell.favoriteButton.tintColor == .red{
+                cell.favoriteButton.tintColor = .black
+                //delete from DB
+                    let objectToDelete = self.fetchedRC.object(at: indexPath)
+                    DataBaseController.getContext().delete(objectToDelete)
+                    DataBaseController.saveContext()
+                    self.fetchCharactersInDB()
+            }else{
+                cell.favoriteButton.tintColor = .red
+                //add to DB
+                let character = Character(context: DataBaseController.getContext())
+                character.id = Int32(self.arrayofChars[indexPath.item].id)
+                character.charDescription = self.arrayofChars[indexPath.item].description
+                character.name = self.arrayofChars[indexPath.item].name
+                character.photoImage = self.arrayofChars[indexPath.item].characterPhoto
+                DataBaseController.saveContext()
+                
+            }
         }
         return cell
     }
