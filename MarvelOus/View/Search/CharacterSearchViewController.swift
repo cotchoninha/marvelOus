@@ -18,6 +18,8 @@ class CharacterSearchViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private var fetchedRC: NSFetchedResultsController<Character>!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
     
     fileprivate func fetchCharactersInDB() {
         let request: NSFetchRequest<Character> = Character.fetchRequest()
@@ -59,6 +61,11 @@ class CharacterSearchViewController: UIViewController {
         fetchCharactersInDB()
         activityIndicator.startAnimating()
         makeRequest(offSetBy: offSet)
+        
+        //COMMENT: Collection Layout
+        let width = (view.frame.size.width - 10) / 2
+        let height = (view.frame.size.height - 10)/2
+        flowLayout.itemSize = CGSize(width: width, height: height)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +104,8 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! CharacterSearchCellItem
         
+        cell.characterPhoto.layer.cornerRadius = 7.0
+        cell.characterPhoto.clipsToBounds = true
         //set button red or black depending on be already saved on DB
         let myImage = UIImage(named: "heart")
         cell.favoriteButton.setImage(myImage?.withRenderingMode(.alwaysTemplate), for: .normal)

@@ -23,6 +23,8 @@ class CharacterDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        characterPhoto.layer.cornerRadius = 7.0
+        characterPhoto.clipsToBounds = true
         let myImage = UIImage(named: "heart")
         self.favoriteButton.setImage(myImage?.withRenderingMode(.alwaysTemplate), for: .normal)
         if let marvelCharacter = self.marvelCharacter{

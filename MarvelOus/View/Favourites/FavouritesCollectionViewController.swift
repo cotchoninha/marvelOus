@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 import CoreData
 
-class FavouritesCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class FavouritesCollectionViewController: UIViewController {
     //TODO: not repeat favorite chars
-    @IBOutlet weak var collectionView: UICollectionView!
     private var fetchedRC: NSFetchedResultsController<Character>!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     fileprivate func fetchCharactersInDB() {
         let request: NSFetchRequest<Character> = Character.fetchRequest()
@@ -26,19 +27,32 @@ class FavouritesCollectionViewController: UIViewController, UICollectionViewDele
         }
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //COMMENT: Collection Layout
+        let width = (view.frame.size.width - 20) / 3
+        flowLayout.itemSize = CGSize(width: width, height: width*1.7)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchCharactersInDB()
         collectionView.reloadData()
     }
-    
+}
 
+extension FavouritesCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fetchedRC.fetchedObjects?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! FavouritesCollectionViewCell
+        cell.characterPhoto.layer.cornerRadius = 7.0
+        cell.characterPhoto.clipsToBounds = true
+
         let myImage = UIImage(named: "heart")
         cell.favoriteButton.setImage(myImage?.withRenderingMode(.alwaysTemplate), for: .normal)
         cell.favoriteButton.tintColor = .red
@@ -70,3 +84,4 @@ class FavouritesCollectionViewController: UIViewController, UICollectionViewDele
     }
     
 }
+

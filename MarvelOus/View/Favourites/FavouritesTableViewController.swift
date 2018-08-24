@@ -41,6 +41,9 @@ class FavouritesTableViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! FavouritesTableViewCell
+        tableView.rowHeight = 130
+        cell.characterPhoto.layer.cornerRadius = 25
+        cell.characterPhoto.layer.masksToBounds = true
         let myImage = UIImage(named: "heart")
         cell.favoriteButton.setImage(myImage?.withRenderingMode(.alwaysTemplate), for: .normal)
         cell.favoriteButton.tintColor = .red
