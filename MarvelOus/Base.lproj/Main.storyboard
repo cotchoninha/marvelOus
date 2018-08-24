@@ -340,8 +340,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0t-T6-7q2">
-                                                    <rect key="frame" x="139" y="181" width="32" height="32"/>
-                                                    <state key="normal" image="heart"/>
+                                                    <rect key="frame" x="141" y="179" width="30" height="34"/>
                                                     <connections>
                                                         <action selector="setFavourite:" destination="al6-xS-9Bw" eventType="touchUpInside" id="xuj-AP-kZa"/>
                                                     </connections>
@@ -410,6 +409,5 @@
     <resources>
         <image name="CollectionView" width="30" height="30"/>
         <image name="TableView" width="30" height="30"/>
-        <image name="heart" width="32" height="32"/>
     </resources>
 </document>

@@ -15,9 +15,22 @@ class CharacterSearchViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    private var fetchedRC: NSFetchedResultsController<Character>!
+    
+    fileprivate func fetchCharactersInDB() {
+        let request: NSFetchRequest<Character> = Character.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Character.name), ascending: true)]
+        do {
+            fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: DataBaseController.getContext(), sectionNameKeyPath: nil, cacheName: nil)
+            try fetchedRC.performFetch()
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchCharactersInDB()
         activityIndicator.startAnimating()
         MarvelRequestManager.sharedInstance().getAllMarvelCharacters() { (success, arrayOfCharacters, error) in
             if success{
@@ -44,6 +57,17 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! CharacterSearchCellItem
+        let myImage = UIImage(named: "heart")
+        cell.favoriteButton.setImage(myImage?.withRenderingMode(.alwaysTemplate), for: .normal)
+        // se if arrayofChars[indexPath.item].id (item daquela célula) bater com o Id de algum dos itens dentro de fetchedObjects seta tint pra red
+        let idOfItem = arrayofChars[indexPath.item].id
+        if let objects = fetchedRC.fetchedObjects{
+            if objects.contains(where: {$0.id == idOfItem}){
+                cell.favoriteButton.tintColor = .red
+            }else{
+                cell.favoriteButton.tintColor = .black
+            }
+        }
         cell.characterName.text = arrayofChars[indexPath.item].name
         if arrayofChars[indexPath.item].characterPhoto == nil{
             cell.characterPhoto.image = #imageLiteral(resourceName: "placeholder")
@@ -54,7 +78,6 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
                     print("MARCELA couldn't download data: \(error)")
                     return
                 }
-                print("MARCELA fim download da imagem")
                 if let imageDataDownloaded = imageData{
                     self.arrayofChars[indexPath.item].characterPhoto = imageDataDownloaded
                 }
