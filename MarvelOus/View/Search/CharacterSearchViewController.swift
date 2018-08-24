@@ -98,10 +98,15 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
             if cell.favoriteButton.tintColor == .red{
                 cell.favoriteButton.tintColor = .black
                 //delete from DB
-                    let objectToDelete = self.fetchedRC.object(at: indexPath)
-                    DataBaseController.getContext().delete(objectToDelete)
-                    DataBaseController.saveContext()
-                    self.fetchCharactersInDB()
+                if let objectsInDB = self.fetchedRC.fetchedObjects{
+                    for itemId in objectsInDB{
+                        if itemId.id == self.arrayofChars[indexPath.item].id{
+                            DataBaseController.getContext().delete(itemId)
+                        }
+                    }
+                }
+                DataBaseController.saveContext()
+                self.fetchCharactersInDB()
             }else{
                 cell.favoriteButton.tintColor = .red
                 //add to DB
@@ -111,7 +116,7 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
                 character.name = self.arrayofChars[indexPath.item].name
                 character.photoImage = self.arrayofChars[indexPath.item].characterPhoto
                 DataBaseController.saveContext()
-                
+                self.fetchCharactersInDB()
             }
         }
         return cell
@@ -120,9 +125,25 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as! CharacterDetailsViewController
         let selectedCharacter = self.arrayofChars[indexPath.item]
-        let favoriteCharacterDetailed = UIMarvelCharacter(characterId: Int(selectedCharacter.id), characterName: selectedCharacter.name, characterPhoto: selectedCharacter.characterPhoto!, characterDescription: selectedCharacter.description, isFavorite: false)
+        let isSelectedFavourite = checkIfObjectItsFavourite(networkCharacter: selectedCharacter)
+        let favoriteCharacterDetailed = UIMarvelCharacter(characterId: Int(selectedCharacter.id), characterName: selectedCharacter.name, characterPhoto: selectedCharacter.characterPhoto!, characterDescription: selectedCharacter.description, isFavorite: isSelectedFavourite)
         //TODO: verify is char is favorite
         controller.marvelCharacter = favoriteCharacterDetailed
         self.present(controller, animated: true, completion: nil)
+    }
+    
+    func checkIfObjectItsFavourite(networkCharacter: APIMarvelCharacter) -> Bool{
+        var isFavourite = true
+        if let objectsInDB = fetchedRC.fetchedObjects{
+            for itemId in objectsInDB{
+                if itemId.id == Int32(networkCharacter.id){
+                    isFavourite = true
+                    return isFavourite
+                }else{
+                    isFavourite = false
+                }
+            }
+        }
+        return isFavourite
     }
 }
