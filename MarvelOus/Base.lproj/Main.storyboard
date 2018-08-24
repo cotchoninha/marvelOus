@@ -332,16 +332,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lL0-2Y-2AI">
-                                                    <rect key="frame" x="0.0" y="4" width="179" height="217.5"/>
+                                                    <rect key="frame" x="0.0" y="4" width="179" height="223.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBb-qh-b03">
-                                                    <rect key="frame" x="7" y="228.5" width="164" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="7" y="234.5" width="164" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0t-T6-7q2">
-                                                    <rect key="frame" x="146" y="185" width="30" height="34"/>
+                                                    <rect key="frame" x="146" y="191" width="30" height="34"/>
                                                     <connections>
                                                         <action selector="setFavourite:" destination="al6-xS-9Bw" eventType="touchUpInside" id="xuj-AP-kZa"/>
                                                     </connections>
@@ -353,19 +353,19 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="P0t-T6-7q2" secondAttribute="trailing" constant="3" id="J4Z-jm-4D0"/>
-                                            <constraint firstAttribute="trailing" secondItem="pBb-qh-b03" secondAttribute="trailing" constant="8" id="MCH-nn-ICC"/>
-                                            <constraint firstItem="pBb-qh-b03" firstAttribute="top" secondItem="lL0-2Y-2AI" secondAttribute="bottom" constant="7" id="RK6-Yo-Anj"/>
-                                            <constraint firstAttribute="bottom" secondItem="pBb-qh-b03" secondAttribute="bottom" constant="6" id="ZCJ-cL-QK5"/>
-                                            <constraint firstItem="lL0-2Y-2AI" firstAttribute="top" secondItem="al6-xS-9Bw" secondAttribute="top" constant="4" id="dtd-80-LEx"/>
-                                            <constraint firstItem="pBb-qh-b03" firstAttribute="top" secondItem="P0t-T6-7q2" secondAttribute="bottom" constant="9.5" id="fLH-eV-pLn"/>
-                                            <constraint firstAttribute="trailing" secondItem="lL0-2Y-2AI" secondAttribute="trailing" id="n8B-mv-2OL"/>
-                                            <constraint firstItem="lL0-2Y-2AI" firstAttribute="leading" secondItem="al6-xS-9Bw" secondAttribute="leading" id="o0f-tx-z2u"/>
-                                            <constraint firstItem="pBb-qh-b03" firstAttribute="leading" secondItem="al6-xS-9Bw" secondAttribute="leading" constant="7" id="z1Q-qT-VaC"/>
+                                            <constraint firstItem="pBb-qh-b03" firstAttribute="leading" secondItem="al6-xS-9Bw" secondAttribute="leading" constant="7" id="8pF-dO-XdW"/>
+                                            <constraint firstAttribute="bottom" secondItem="pBb-qh-b03" secondAttribute="bottom" constant="6" id="9eb-X3-f2p"/>
+                                            <constraint firstItem="lL0-2Y-2AI" firstAttribute="top" secondItem="al6-xS-9Bw" secondAttribute="top" constant="4" id="DPQ-Ha-KW0"/>
+                                            <constraint firstItem="pBb-qh-b03" firstAttribute="top" secondItem="P0t-T6-7q2" secondAttribute="bottom" constant="9.5" id="IZN-pE-bDg"/>
+                                            <constraint firstAttribute="trailing" secondItem="lL0-2Y-2AI" secondAttribute="trailing" id="UTB-t8-ZJK"/>
+                                            <constraint firstAttribute="trailing" secondItem="pBb-qh-b03" secondAttribute="trailing" constant="8" id="jFj-NZ-3LN"/>
+                                            <constraint firstItem="lL0-2Y-2AI" firstAttribute="leading" secondItem="al6-xS-9Bw" secondAttribute="leading" id="oeN-bO-N2Z"/>
+                                            <constraint firstItem="pBb-qh-b03" firstAttribute="top" secondItem="lL0-2Y-2AI" secondAttribute="bottom" constant="7" id="reE-ZJ-3UM"/>
+                                            <constraint firstAttribute="trailing" secondItem="P0t-T6-7q2" secondAttribute="trailing" constant="3" id="t7k-1V-Usy"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="activityIndicatorCell" destination="L3L-3G-dtd" id="Jdx-GO-lZX"/>
-                                            <outlet property="characterName" destination="pBb-qh-b03" id="bdO-JT-o9c"/>
+                                            <outlet property="characterName" destination="pBb-qh-b03" id="pmG-Nx-fpc"/>
                                             <outlet property="characterPhoto" destination="lL0-2Y-2AI" id="YpD-SP-Z7C"/>
                                             <outlet property="favoriteButton" destination="P0t-T6-7q2" id="D1F-22-MDZ"/>
                                         </connections>

@@ -63,9 +63,11 @@ class CharacterSearchViewController: UIViewController {
         makeRequest(offSetBy: offSet)
         
         //COMMENT: Collection Layout
-        let width = (view.frame.size.width - 10) / 2
-        let height = (view.frame.size.height - 10)/2
-        flowLayout.itemSize = CGSize(width: width, height: height)
+//        let width = (view.frame.size.width - 10) / 2
+//        let height = (view.frame.size.height - searchBar.frame.height - 10)/2
+//        flowLayout.itemSize = CGSize(width: width, height: height)
+        let width = (view.frame.size.width - 20) / 3
+        flowLayout.itemSize = CGSize(width: width, height: width*1.7)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +97,11 @@ class CharacterSearchViewController: UIViewController {
     }
 }
 
-extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (view.frame.width - 10)/2, height: 300)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayofChars.count
@@ -103,6 +109,11 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! CharacterSearchCellItem
+        if self.arrayofChars[indexPath.item].name == ""{
+            cell.characterName.text = "Marvel character"
+        }else{
+        cell.characterName.text = self.arrayofChars[indexPath.item].name
+        }
         
         cell.characterPhoto.layer.cornerRadius = 7.0
         cell.characterPhoto.clipsToBounds = true
@@ -117,7 +128,6 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
             }
         }
         
-        cell.characterName.text = arrayofChars[indexPath.item].name
         if arrayofChars[indexPath.item].characterPhoto == nil{
             cell.characterPhoto.image = #imageLiteral(resourceName: "placeholder")
             cell.activityIndicatorCell.startAnimating()
@@ -130,7 +140,7 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
                 if let imageDataDownloaded = imageData{
                     self.arrayofChars[indexPath.item].characterPhoto = imageDataDownloaded
                 }
-                //chamar as linhas abaixo quando for para comecar o activity indicator pra cada célula antes das imagens serem downlodadas
+                
                 DispatchQueue.main.async {
                     collectionView.reloadItems(at: [indexPath])
                 }
