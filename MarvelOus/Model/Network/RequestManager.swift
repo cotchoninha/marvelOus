@@ -18,9 +18,9 @@ class MarvelRequestManager: NSObject{
         return Singleton.sharedInstance
     }
     
-    func getAllMarvelCharacters(_ completionHandlerForGETMARVEL: @escaping (_ success: Bool, _ imagesArray: [APIMarvelCharacter]?, _ error: Error?) -> Void) {
+    func getAllMarvelCharacters(offSet: Int, _ completionHandlerForGETMARVEL: @escaping (_ success: Bool, _ imagesArray: [APIMarvelCharacter]?, _ totalNumberOfCharacters: Int?, _ error: Error?) -> Void) {
         
-        let methodParameters = [Constants.MarvelParameterKeys.APIPublicKey: Constants.MarvelParameterValues.APIPublicKey, Constants.MarvelParameterKeys.Hash: Constants.MarvelParameterValues.Hash,  Constants.MarvelParameterKeys.Limit: Constants.MarvelParameterValues.Limit, Constants.MarvelParameterKeys.Ts: Constants.MarvelParameterValues.Ts] as [String : Any]
+        let methodParameters = [Constants.MarvelParameterKeys.APIPublicKey: Constants.MarvelParameterValues.APIPublicKey, Constants.MarvelParameterKeys.Hash: Constants.MarvelParameterValues.Hash,  Constants.MarvelParameterKeys.Limit: Constants.MarvelParameterValues.Limit, Constants.MarvelParameterKeys.Ts: Constants.MarvelParameterValues.Ts, Constants.MarvelParameterKeys.Offset: offSet] as [String : Any]
         
         let urlString = Constants.Marvel.APIBaseURL + escapedParameters(methodParameters as [String:AnyObject])
         print("MARCELA: URLSTRING \(urlString)")
@@ -36,7 +36,7 @@ class MarvelRequestManager: NSObject{
             func displayError(_ error: String) {
                 print(error)
                 print("URL at time of error: \(url)")
-                completionHandlerForGETMARVEL(false, nil, error as? Error)
+                completionHandlerForGETMARVEL(false, nil, nil, error as? Error)
             }
             
             /* GUARD: Was there an error? */
@@ -73,10 +73,12 @@ class MarvelRequestManager: NSObject{
             }
             
             /* GUARD: Are the "photos" and "photo" keys in our result? */
-            guard let dataKey = parsedResult[Constants.MarvelResponseKeys.Data] as? [String:AnyObject], let results = dataKey[Constants.MarvelResponseKeys.Results] as? [[String:AnyObject]] else {
+            guard let dataKey = parsedResult[Constants.MarvelResponseKeys.Data] as? [String:AnyObject], let results = dataKey[Constants.MarvelResponseKeys.Results] as? [[String:AnyObject]], let totalCharacters = dataKey[Constants.MarvelResponseKeys.Total] as? Int else {
                 displayError("Cannot find keys '\(Constants.MarvelResponseKeys.Data)' and '\(Constants.MarvelResponseKeys.Results)' in \(parsedResult)")
                 return
             }
+            
+//            self.totalNumberOfCharacters = totalCharacters
             var charactersArray = [APIMarvelCharacter]()
             for item in results{
                 guard let id = item[Constants.MarvelResponseKeys.Id], let name = item[Constants.MarvelResponseKeys.Name], let description = item[Constants.MarvelResponseKeys.Description], let thumbnail = item[Constants.MarvelResponseKeys.Thumbnail], let path = thumbnail[Constants.MarvelResponseKeys.Path], let imgExtension = thumbnail[Constants.MarvelResponseKeys.ImgExtension] else{
@@ -86,8 +88,7 @@ class MarvelRequestManager: NSObject{
                 charactersArray.append(APIMarvelCharacter(id: id as! Int, name: name as! String, description: description as! String, path: path as! String, imgExtension: imgExtension as! String, characterPhoto: nil))
                 
             }
-            print("MARCELA: charactersArray \(charactersArray)")
-            completionHandlerForGETMARVEL(true, charactersArray, nil)
+            completionHandlerForGETMARVEL(true, charactersArray, totalCharacters, nil)
         }
         task.resume()
         
@@ -155,7 +156,6 @@ class MarvelRequestManager: NSObject{
                 charactersArray.append(APIMarvelCharacter(id: id as! Int, name: name as! String, description: description as! String, path: path as! String, imgExtension: imgExtension as! String, characterPhoto: nil))
                 
             }
-            print("MARCELA: charactersArray \(charactersArray)")
             completionHandlerForGETMARVEL(true, charactersArray, nil)
         }
         task.resume()

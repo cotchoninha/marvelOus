@@ -11,6 +11,7 @@ import CoreData
 
 class CharacterSearchViewController: UIViewController {
     
+    var offSet = 0
     var arrayofChars = [APIMarvelCharacter]()
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -29,8 +30,8 @@ class CharacterSearchViewController: UIViewController {
         }
     }
     
-    @objc fileprivate func makeRequest() {
-        MarvelRequestManager.sharedInstance().getAllMarvelCharacters() { (success, arrayOfCharacters, error) in
+    @objc fileprivate func makeRequest(offSetBy: Int) {
+        MarvelRequestManager.sharedInstance().getAllMarvelCharacters(offSet: offSetBy) { (success, arrayOfCharacters, totalNumberOfCharacters, error) in
             if success{
                 if let arrayOfCharacters = arrayOfCharacters{
                     self.arrayofChars = arrayOfCharacters
@@ -40,6 +41,11 @@ class CharacterSearchViewController: UIViewController {
                     self.activityIndicator.hidesWhenStopped = true
                     self.activityIndicator.stopAnimating()
                 }
+                if let totalNumberOfCharacters = totalNumberOfCharacters{
+                    if self.offSet <= totalNumberOfCharacters{
+                        self.offSet += 50
+                    }
+                }
             }else{
                 print("Couldn't get Marvel's Characters: \(error?.localizedDescription)")
             }
@@ -48,14 +54,21 @@ class CharacterSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("marcela view didLoad")
         fetchCharactersInDB()
         activityIndicator.startAnimating()
-        makeRequest()
-        
+        makeRequest(offSetBy: offSet)
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(self.makeRequest), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(self.refresh), for: UIControlEvents.valueChanged)
         collectionView.refreshControl  = refreshControl
+    }
+    
+    @objc func refresh(){
+        arrayofChars.removeAll()
+        collectionView.reloadData()
+        makeRequest(offSetBy: offSet)
+        collectionView.reloadData()
+        collectionView.refreshControl?.endRefreshing()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

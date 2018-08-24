@@ -22,6 +22,8 @@ struct Constants {
         static let Ts = "ts"
         static let Limit = "limit"
         static let NameStartsWith = "nameStartsWith"
+        static let Offset = "offset"
+
     }
     
     // MARK: Flickr Parameter Values
@@ -44,6 +46,8 @@ struct Constants {
         static let Thumbnail = "thumbnail"
         static let Path = "path"
         static let ImgExtension = "extension"
+        static let Total = "total"
+
     }
     
     // MARK: Flickr Response Values
