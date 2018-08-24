@@ -51,7 +51,7 @@ class CharacterSearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("marcela view will appear")
+        //when returned from DetailVC needs to check again what is in the DB to design UI with correct heart colours
         fetchCharactersInDB()
         collectionView.reloadData()
         
@@ -155,4 +155,8 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
         }
         return isFavourite
     }
+}
+
+extension CharacterSearchViewController: UISearchBarDelegate{
+    
 }
