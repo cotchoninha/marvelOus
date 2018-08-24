@@ -375,12 +375,19 @@
                                     <outlet property="delegate" destination="IN7-Km-3VU" id="RjP-ts-myl"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hjC-hs-XQY">
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hjC-hs-XQY">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="ZZV-xh-cUH"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="IN7-Km-3VU" id="KPP-WS-Ep9"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -399,6 +406,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="UZM-YW-aQJ" id="WHh-Y6-5rY"/>
                         <outlet property="collectionView" destination="dyl-7J-3VK" id="cXA-sl-UaZ"/>
+                        <outlet property="searchBar" destination="hjC-hs-XQY" id="oEu-XB-L8a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BtG-UJ-GDa" userLabel="First Responder" sceneMemberID="firstResponder"/>

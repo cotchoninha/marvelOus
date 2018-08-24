@@ -13,6 +13,7 @@ class CharacterSearchViewController: UIViewController {
     
     var arrayofChars = [APIMarvelCharacter]()
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private var fetchedRC: NSFetchedResultsController<Character>!
@@ -28,11 +29,7 @@ class CharacterSearchViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("marcela view didLoad")
-        fetchCharactersInDB()
-        activityIndicator.startAnimating()
+    @objc fileprivate func makeRequest() {
         MarvelRequestManager.sharedInstance().getAllMarvelCharacters() { (success, arrayOfCharacters, error) in
             if success{
                 if let arrayOfCharacters = arrayOfCharacters{
@@ -47,6 +44,18 @@ class CharacterSearchViewController: UIViewController {
                 print("Couldn't get Marvel's Characters: \(error?.localizedDescription)")
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("marcela view didLoad")
+        fetchCharactersInDB()
+        activityIndicator.startAnimating()
+        makeRequest()
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.makeRequest), for: UIControlEvents.valueChanged)
+        collectionView.refreshControl  = refreshControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -159,4 +168,30 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
 
 extension CharacterSearchViewController: UISearchBarDelegate{
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        activityIndicator.startAnimating()
+        guard let query = searchBar.text else {
+            return
+        }
+        MarvelRequestManager.sharedInstance().getMarvelCharactersWithName(nameStartsWith: query) { (success, listOfSearchedCharacters, error) in
+            if success{
+                if let searchedCharacters = listOfSearchedCharacters{
+                    self.arrayofChars = searchedCharacters
+                }
+                DispatchQueue.main.async {
+                    searchBar.resignFirstResponder()
+                    self.collectionView.reloadData()
+                    self.activityIndicator.hidesWhenStopped = true
+                    self.activityIndicator.stopAnimating()
+                }
+            }else{
+                print("Couldn't get Marvel's Characters: \(error?.localizedDescription)")
+            }
+        }
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        searchBar.resignFirstResponder()
+    }
 }

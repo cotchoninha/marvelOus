@@ -93,7 +93,7 @@ class MarvelRequestManager: NSObject{
         
     }
     
-    func getMarvelCharacters(nameStartsWith: String?, _ completionHandlerForGETMARVEL: @escaping (_ success: Bool, _ imagesArray: [APIMarvelCharacter]?, _ error: Error?) -> Void) {
+    func getMarvelCharactersWithName(nameStartsWith: String?, _ completionHandlerForGETMARVEL: @escaping (_ success: Bool, _ imagesArray: [APIMarvelCharacter]?, _ error: Error?) -> Void) {
         
         let methodParameters = [Constants.MarvelParameterKeys.APIPublicKey: Constants.MarvelParameterValues.APIPublicKey, Constants.MarvelParameterKeys.Hash: Constants.MarvelParameterValues.Hash,  Constants.MarvelParameterKeys.Limit: Constants.MarvelParameterValues.Limit, Constants.MarvelParameterKeys.NameStartsWith: (nameStartsWith ?? nil), Constants.MarvelParameterKeys.Ts: Constants.MarvelParameterValues.Ts] as [String : Any]
         
