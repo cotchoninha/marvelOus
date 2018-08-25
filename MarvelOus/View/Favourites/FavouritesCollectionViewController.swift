@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class FavouritesCollectionViewController: UIViewController {
+class FavouritesCollectionViewController: UIViewController, UITabBarControllerDelegate {
     
     //MARK: properties
     private var fetchedRC: NSFetchedResultsController<Character>!
@@ -18,6 +18,7 @@ class FavouritesCollectionViewController: UIViewController {
     //MARK: IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var tabBarGrid: UITabBarItem!
     
     //MARK: Method for fetch results controller
     fileprivate func fetchCharactersInDB() {
@@ -27,6 +28,7 @@ class FavouritesCollectionViewController: UIViewController {
             fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: DataBaseController.getContext(), sectionNameKeyPath: nil, cacheName: nil)
             try fetchedRC.performFetch()
         } catch let error as NSError {
+            UserAlertManager.showAlert(title: "Couldn't access the database. ", message: "It wasn't possible to acess your database. Please, try again.", buttonMessage: "Try again.", viewController: self)
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
@@ -37,7 +39,7 @@ class FavouritesCollectionViewController: UIViewController {
         super.viewDidLoad()
         //COMMENT: Collection Layout
         let width = (view.frame.size.width - 20) / 3
-        flowLayout.itemSize = CGSize(width: width, height: width*1.7)
+        flowLayout.itemSize = CGSize(width: width, height: width*1.5)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +47,7 @@ class FavouritesCollectionViewController: UIViewController {
         fetchCharactersInDB()
         collectionView.reloadData()
     }
+    
 }
 
 extension FavouritesCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource{

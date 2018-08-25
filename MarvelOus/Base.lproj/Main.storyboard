@@ -14,7 +14,7 @@
         <!--My MarvelOus-->
         <scene sceneID="LOz-Ta-2cR">
             <objects>
-                <tabBarController id="bDJ-o9-Uam" sceneMemberID="viewController">
+                <tabBarController id="bDJ-o9-Uam" customClass="FavoritesTabBarController" customModule="MarvelOus" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="My MarvelOus" id="Nsd-4D-mdp">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Pd5-zb-pjG"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="nrI-uw-58K">
@@ -128,10 +128,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f54-po-0Up"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Grid" image="CollectionView" selectedImage="CollectionView" id="Hp9-7z-TVo"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Grid" image="CollectionView" selectedImage="CollectionView" id="Hp9-7z-TVo"/>
                     <connections>
                         <outlet property="collectionView" destination="8bu-8E-s7J" id="D3J-H7-GqH"/>
                         <outlet property="flowLayout" destination="Trl-BE-yZq" id="d1p-Dq-Glu"/>
+                        <outlet property="tabBarGrid" destination="Hp9-7z-TVo" id="ZT1-vV-40c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKF-ih-RBX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -295,7 +296,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kyI-Z5-hZH"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="List" image="TableView" selectedImage="TableView" id="hHp-D5-e8t"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="List" image="TableView" selectedImage="TableView" id="hHp-D5-e8t"/>
                     <connections>
                         <outlet property="tableView" destination="WXd-Er-igP" id="FYU-uv-zv2"/>
                     </connections>

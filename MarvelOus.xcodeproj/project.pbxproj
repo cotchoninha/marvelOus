@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0C0C1B06212C94E700D43B4B /* DataBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0C1B05212C94E700D43B4B /* DataBaseController.swift */; };
+		0C1BD72321319E90008D8C74 /* FavoritesTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1BD72221319E90008D8C74 /* FavoritesTabBarController.swift */; };
+		0C6ED9932131A6BC005B56C1 /* UserAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6ED9922131A6BC005B56C1 /* UserAlertManager.swift */; };
 		0CC9A4E5212ECCEB001A82C5 /* UIMarvelCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9A4E4212ECCEB001A82C5 /* UIMarvelCharacter.swift */; };
 		0CE3D3C8212C3F550000BFFC /* APIMarvelCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE3D3C7212C3F550000BFFC /* APIMarvelCharacter.swift */; };
 		0CE3D3CA212C480F0000BFFC /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE3D3C9212C480F0000BFFC /* CharacterDetailsViewController.swift */; };
@@ -28,6 +30,8 @@
 
 /* Begin PBXFileReference section */
 		0C0C1B05212C94E700D43B4B /* DataBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseController.swift; sourceTree = "<group>"; };
+		0C1BD72221319E90008D8C74 /* FavoritesTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTabBarController.swift; sourceTree = "<group>"; };
+		0C6ED9922131A6BC005B56C1 /* UserAlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlertManager.swift; sourceTree = "<group>"; };
 		0CC9A4E4212ECCEB001A82C5 /* UIMarvelCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMarvelCharacter.swift; sourceTree = "<group>"; };
 		0CE3D3C7212C3F550000BFFC /* APIMarvelCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMarvelCharacter.swift; sourceTree = "<group>"; };
 		0CE3D3C9212C480F0000BFFC /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 		0C0C1B07212C94F100D43B4B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0C6ED9922131A6BC005B56C1 /* UserAlertManager.swift */,
 				0C685088212EC77B00CA8E87 /* Favourites */,
 				0C685087212EC77900CA8E87 /* Search */,
 				0C685086212EC76D00CA8E87 /* Detail */,
@@ -105,6 +110,7 @@
 				0CEEBA27212C23A00019CB3D /* FavouritesTableViewCell.swift */,
 				0CEEBA21212C232D0019CB3D /* FavouritesCollectionViewController.swift */,
 				0CEEBA23212C23390019CB3D /* FavouritesCollectionViewCell.swift */,
+				0C1BD72221319E90008D8C74 /* FavoritesTabBarController.swift */,
 			);
 			path = Favourites;
 			sourceTree = "<group>";
@@ -238,6 +244,7 @@
 				0CEEBA0F212B48B50019CB3D /* RequestManager.swift in Sources */,
 				0CEEBA26212C23480019CB3D /* FavouritesTableViewController.swift in Sources */,
 				0CE3D3CA212C480F0000BFFC /* CharacterDetailsViewController.swift in Sources */,
+				0C6ED9932131A6BC005B56C1 /* UserAlertManager.swift in Sources */,
 				0CE3D3C8212C3F550000BFFC /* APIMarvelCharacter.swift in Sources */,
 				0CE3D3D0212C5B2B0000BFFC /* ConstantsMarvel.swift in Sources */,
 				0CEEBA15212B48B50019CB3D /* MarvelOus.xcdatamodeld in Sources */,
@@ -247,6 +254,7 @@
 				0CE3D3CE212C52560000BFFC /* CharacterSearchCellItem.swift in Sources */,
 				0CEEBA24212C23390019CB3D /* FavouritesCollectionViewCell.swift in Sources */,
 				0CEEBA0D212B48B50019CB3D /* AppDelegate.swift in Sources */,
+				0C1BD72321319E90008D8C74 /* FavoritesTabBarController.swift in Sources */,
 				0C0C1B06212C94E700D43B4B /* DataBaseController.swift in Sources */,
 				0CEEBA28212C23A00019CB3D /* FavouritesTableViewCell.swift in Sources */,
 			);

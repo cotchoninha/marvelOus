@@ -26,6 +26,7 @@ class FavouritesTableViewController: UIViewController{
             fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: DataBaseController.getContext(), sectionNameKeyPath: nil, cacheName: nil)
             try fetchedRC.performFetch()
         } catch let error as NSError {
+            UserAlertManager.showAlert(title: "Couldnt access the database. ", message: "It wasn't possible to acess your database. Please, try again.", buttonMessage: "Try again.", viewController: self)
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
@@ -37,6 +38,10 @@ class FavouritesTableViewController: UIViewController{
         tableView.reloadData()
     }
     
+    //MARK: Method that will save user preference on Table view
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        UserDefaults.standard.set(viewController, forKey: "favoritesScreenPreference")
+    }
 }
 
 extension FavouritesTableViewController: UITableViewDelegate, UITableViewDataSource{

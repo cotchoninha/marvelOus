@@ -23,16 +23,13 @@ class MarvelRequestManager: NSObject{
         let methodParameters = [Constants.MarvelParameterKeys.APIPublicKey: Constants.MarvelParameterValues.APIPublicKey, Constants.MarvelParameterKeys.Hash: Constants.MarvelParameterValues.Hash,  Constants.MarvelParameterKeys.Limit: Constants.MarvelParameterValues.Limit, Constants.MarvelParameterKeys.Ts: Constants.MarvelParameterValues.Ts, Constants.MarvelParameterKeys.Offset: offSet] as [String : Any]
         
         let urlString = Constants.Marvel.APIBaseURL + escapedParameters(methodParameters as [String:AnyObject])
-        print("MARCELA: URLSTRING \(urlString)")
         let url = URL(string: urlString)!
         let request = URLRequest(url: url)
         let session = URLSession.shared
         
         let task = session.dataTask(with: request) { (data, response, error) in
             
-            //colocar o botao de NewCollection como disabled
-            
-            // if an error occurs, print it and re-enable the UI
+            // if an error occurs, print it
             func displayError(_ error: String) {
                 print(error)
                 print("URL at time of error: \(url)")
