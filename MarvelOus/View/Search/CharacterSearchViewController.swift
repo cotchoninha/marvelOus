@@ -60,6 +60,7 @@ class CharacterSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.isOnSearchMode = false
+        self.offSet = 0
         fetchCharactersInDB()
         activityIndicator.startAnimating()
         makeRequest(offSetBy: offSet)
@@ -68,8 +69,9 @@ class CharacterSearchViewController: UIViewController {
 //        let width = (view.frame.size.width - 10) / 2
 //        let height = (view.frame.size.height - searchBar.frame.height - 10)/2
 //        flowLayout.itemSize = CGSize(width: width, height: height)
-        let width = (view.frame.size.width - 20) / 3
-        flowLayout.itemSize = CGSize(width: width, height: width*1.7)
+        let width = (view.frame.size.width - 30) / 4
+        let height = (view.frame.size.height) - 30/4
+        flowLayout.itemSize = CGSize(width: width, height: height)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,10 +81,10 @@ class CharacterSearchViewController: UIViewController {
         collectionView.reloadData()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.offSet = 0 
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.offSet = 0
+//    }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let contentOffset = scrollView.contentOffset.y;
@@ -104,7 +106,7 @@ class CharacterSearchViewController: UIViewController {
 extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (view.frame.width - 10)/2, height: 300)
+        return CGSize(width: (view.frame.width - 30)/4, height: 150)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -332,16 +332,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lL0-2Y-2AI">
-                                                    <rect key="frame" x="0.0" y="4" width="179" height="223.5"/>
+                                                    <rect key="frame" x="0.0" y="4" width="179" height="231.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBb-qh-b03">
-                                                    <rect key="frame" x="7" y="234.5" width="164" height="14.5"/>
+                                                    <rect key="frame" x="7" y="238.5" width="164" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0t-T6-7q2">
-                                                    <rect key="frame" x="146" y="191" width="30" height="34"/>
+                                                    <rect key="frame" x="146" y="192" width="30" height="34"/>
                                                     <connections>
                                                         <action selector="setFavourite:" destination="al6-xS-9Bw" eventType="touchUpInside" id="xuj-AP-kZa"/>
                                                     </connections>
@@ -354,13 +354,13 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="pBb-qh-b03" firstAttribute="leading" secondItem="al6-xS-9Bw" secondAttribute="leading" constant="7" id="8pF-dO-XdW"/>
-                                            <constraint firstAttribute="bottom" secondItem="pBb-qh-b03" secondAttribute="bottom" constant="6" id="9eb-X3-f2p"/>
+                                            <constraint firstAttribute="bottom" secondItem="pBb-qh-b03" secondAttribute="bottom" constant="2" id="9eb-X3-f2p"/>
                                             <constraint firstItem="lL0-2Y-2AI" firstAttribute="top" secondItem="al6-xS-9Bw" secondAttribute="top" constant="4" id="DPQ-Ha-KW0"/>
-                                            <constraint firstItem="pBb-qh-b03" firstAttribute="top" secondItem="P0t-T6-7q2" secondAttribute="bottom" constant="9.5" id="IZN-pE-bDg"/>
                                             <constraint firstAttribute="trailing" secondItem="lL0-2Y-2AI" secondAttribute="trailing" id="UTB-t8-ZJK"/>
+                                            <constraint firstItem="pBb-qh-b03" firstAttribute="top" secondItem="P0t-T6-7q2" secondAttribute="bottom" constant="12.5" id="eJV-Tp-Q6A"/>
                                             <constraint firstAttribute="trailing" secondItem="pBb-qh-b03" secondAttribute="trailing" constant="8" id="jFj-NZ-3LN"/>
                                             <constraint firstItem="lL0-2Y-2AI" firstAttribute="leading" secondItem="al6-xS-9Bw" secondAttribute="leading" id="oeN-bO-N2Z"/>
-                                            <constraint firstItem="pBb-qh-b03" firstAttribute="top" secondItem="lL0-2Y-2AI" secondAttribute="bottom" constant="7" id="reE-ZJ-3UM"/>
+                                            <constraint firstItem="pBb-qh-b03" firstAttribute="top" secondItem="lL0-2Y-2AI" secondAttribute="bottom" constant="3" id="reE-ZJ-3UM"/>
                                             <constraint firstAttribute="trailing" secondItem="P0t-T6-7q2" secondAttribute="trailing" constant="3" id="t7k-1V-Usy"/>
                                         </constraints>
                                         <connections>
@@ -413,7 +413,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BtG-UJ-GDa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1334" y="-1148"/>
+            <point key="canvasLocation" x="-1335.2" y="-1148.2758620689656"/>
         </scene>
     </scenes>
     <resources>
