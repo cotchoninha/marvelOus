@@ -10,7 +10,6 @@ import UIKit
 
 class MarvelRequestManager: NSObject{
     
-    //singleton
     class func sharedInstance() -> MarvelRequestManager {
         struct Singleton {
             static var sharedInstance = MarvelRequestManager()
@@ -18,6 +17,7 @@ class MarvelRequestManager: NSObject{
         return Singleton.sharedInstance
     }
     
+    //MARK: This method will request all characters from Marvel API
     func getAllMarvelCharacters(offSet: Int, _ completionHandlerForGETMARVEL: @escaping (_ success: Bool, _ imagesArray: [APIMarvelCharacter]?, _ totalNumberOfCharacters: Int?, _ error: Error?) -> Void) {
         
         let methodParameters = [Constants.MarvelParameterKeys.APIPublicKey: Constants.MarvelParameterValues.APIPublicKey, Constants.MarvelParameterKeys.Hash: Constants.MarvelParameterValues.Hash,  Constants.MarvelParameterKeys.Limit: Constants.MarvelParameterValues.Limit, Constants.MarvelParameterKeys.Ts: Constants.MarvelParameterValues.Ts, Constants.MarvelParameterKeys.Offset: offSet] as [String : Any]
@@ -94,6 +94,7 @@ class MarvelRequestManager: NSObject{
         
     }
     
+    //MARK: This method will request specific characters from Marvel API with the name begining with
     func getMarvelCharactersWithName(nameStartsWith: String?, _ completionHandlerForGETMARVEL: @escaping (_ success: Bool, _ imagesArray: [APIMarvelCharacter]?, _ error: Error?) -> Void) {
         
         let methodParameters = [Constants.MarvelParameterKeys.APIPublicKey: Constants.MarvelParameterValues.APIPublicKey, Constants.MarvelParameterKeys.Hash: Constants.MarvelParameterValues.Hash,  Constants.MarvelParameterKeys.Limit: Constants.MarvelParameterValues.Limit, Constants.MarvelParameterKeys.NameStartsWith: (nameStartsWith ?? nil), Constants.MarvelParameterKeys.Ts: Constants.MarvelParameterValues.Ts] as [String : Any]
@@ -161,6 +162,8 @@ class MarvelRequestManager: NSObject{
         task.resume()
         
     }
+    
+    //MARK: This method will create request URL
     private func escapedParameters(_ parameters: [String:AnyObject]) -> String {
         
         if parameters.isEmpty {
@@ -185,18 +188,7 @@ class MarvelRequestManager: NSObject{
         }
     }
     
-    func parseDataWithCodable(data: Data) -> [APIMarvelCharacter]? {
-        
-        let jsonDecoder = JSONDecoder()
-        do{
-            let characterResult = try jsonDecoder.decode(CharacterResult.self, from: data)
-            return characterResult.results
-        } catch{
-            print("Could not parse the data as JSON: '\(data)'")
-            return nil
-        }
-    }
-    
+    //MARK: This method will download character images
     func downloadImage(url: String, _ completionHandlerOnImageDownloaded: @escaping (_ imageData: Data?, _ error: Error?) -> Void){
         if let urlString = URL(string: url){
             let task = URLSession.shared.dataTask(with: urlString) { (imageData, response, error) in

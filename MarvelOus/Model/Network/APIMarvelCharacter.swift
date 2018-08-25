@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct APIMarvelCharacter: Codable {
+struct APIMarvelCharacter {
     
     var id: Int
     var name: String
@@ -18,7 +18,3 @@ struct APIMarvelCharacter: Codable {
     var characterPhoto: Data?
     
 }
-struct CharacterResult: Codable {
-    var results: [APIMarvelCharacter]?
-}
-

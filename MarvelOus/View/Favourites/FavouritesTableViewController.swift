@@ -10,12 +10,15 @@ import Foundation
 import UIKit
 import CoreData
 
-class FavouritesTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class FavouritesTableViewController: UIViewController{
     
+    //MARK: properties
     private var fetchedRC: NSFetchedResultsController<Character>!
     
+    //MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
+    //MARK: Method for fetch results controller
     fileprivate func fetchCharactersInDB() {
         let request: NSFetchRequest<Character> = Character.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Character.name), ascending: true)]
@@ -27,13 +30,16 @@ class FavouritesTableViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
+    //MARK: UI preparation
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchCharactersInDB()
         tableView.reloadData()
     }
     
-    
+}
+
+extension FavouritesTableViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedRC.fetchedObjects?.count ?? 0
@@ -41,18 +47,22 @@ class FavouritesTableViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! FavouritesTableViewCell
+        
         tableView.rowHeight = 130
         cell.characterPhoto.layer.cornerRadius = 25
         cell.characterPhoto.layer.masksToBounds = true
+        
         let myImage = UIImage(named: "heart")
         cell.favoriteButton.setImage(myImage?.withRenderingMode(.alwaysTemplate), for: .normal)
         cell.favoriteButton.tintColor = .red
+        
         let fetchedObject = fetchedRC.object(at: indexPath)
         cell.characterName.text = fetchedObject.name
         if let photoImage = fetchedObject.photoImage{
             cell.characterPhoto.image = UIImage(data: photoImage)
         }
         
+        //COMMENT: determines what will be executed when favourite button is pressed
         cell.buttonAction = {
             if let index = tableView.indexPath(for: cell){
                 let objectToDelete = self.fetchedRC.object(at: index)

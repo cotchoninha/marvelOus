@@ -11,11 +11,15 @@ import UIKit
 import CoreData
 
 class FavouritesCollectionViewController: UIViewController {
-    //TODO: not repeat favorite chars
+    
+    //MARK: properties
     private var fetchedRC: NSFetchedResultsController<Character>!
+    
+    //MARK: IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
+    //MARK: Method for fetch results controller
     fileprivate func fetchCharactersInDB() {
         let request: NSFetchRequest<Character> = Character.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Character.name), ascending: true)]
@@ -27,9 +31,10 @@ class FavouritesCollectionViewController: UIViewController {
         }
     }
 
+    //MARK: UI preparation
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //COMMENT: Collection Layout
         let width = (view.frame.size.width - 20) / 3
         flowLayout.itemSize = CGSize(width: width, height: width*1.7)
@@ -50,6 +55,7 @@ extension FavouritesCollectionViewController: UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! FavouritesCollectionViewCell
+        
         cell.characterPhoto.layer.cornerRadius = 7.0
         cell.characterPhoto.clipsToBounds = true
 
@@ -63,6 +69,7 @@ extension FavouritesCollectionViewController: UICollectionViewDelegate, UICollec
             cell.characterPhoto.image = UIImage(data: photoImage)
         }
         
+        //COMMENT: determines what will be executed when favourite button is pressed
         cell.buttonAction = {
             if let index = collectionView.indexPath(for: cell){
                 let objectToDelete = self.fetchedRC.object(at: index)
