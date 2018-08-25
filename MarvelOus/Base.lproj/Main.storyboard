@@ -11,11 +11,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--My MarvelOus-->
         <scene sceneID="LOz-Ta-2cR">
             <objects>
                 <tabBarController id="bDJ-o9-Uam" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Nsd-4D-mdp">
+                    <navigationItem key="navigationItem" title="My MarvelOus" id="Nsd-4D-mdp">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="nrI-uw-58K">
                             <connections>
                                 <segue destination="IN7-Km-3VU" kind="show" id="vV8-I4-cge"/>
@@ -52,7 +52,7 @@
             </objects>
             <point key="canvasLocation" x="-2550" y="-286"/>
         </scene>
-        <!--Item-->
+        <!--Grid-->
         <scene sceneID="t4C-K3-PaE">
             <objects>
                 <viewController id="6rC-9t-2zf" customClass="FavouritesCollectionViewController" customModule="MarvelOus" customModuleProvider="target" sceneMemberID="viewController">
@@ -127,7 +127,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f54-po-0Up"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="CollectionView" selectedImage="CollectionView" id="Hp9-7z-TVo"/>
+                    <tabBarItem key="tabBarItem" title="Grid" image="CollectionView" selectedImage="CollectionView" id="Hp9-7z-TVo"/>
                     <connections>
                         <outlet property="collectionView" destination="8bu-8E-s7J" id="D3J-H7-GqH"/>
                         <outlet property="flowLayout" destination="Trl-BE-yZq" id="d1p-Dq-Glu"/>
@@ -216,7 +216,7 @@
             </objects>
             <point key="canvasLocation" x="550" y="-286"/>
         </scene>
-        <!--Item-->
+        <!--List-->
         <scene sceneID="Ie0-ss-Gp5">
             <objects>
                 <viewController id="whX-sV-7zP" customClass="FavouritesTableViewController" customModule="MarvelOus" customModuleProvider="target" sceneMemberID="viewController">
@@ -293,7 +293,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kyI-Z5-hZH"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="TableView" selectedImage="TableView" id="hHp-D5-e8t"/>
+                    <tabBarItem key="tabBarItem" title="List" image="TableView" selectedImage="TableView" id="hHp-D5-e8t"/>
                     <connections>
                         <outlet property="tableView" destination="WXd-Er-igP" id="FYU-uv-zv2"/>
                     </connections>
@@ -302,7 +302,7 @@
             </objects>
             <point key="canvasLocation" x="-434.39999999999998" y="220.83958020989508"/>
         </scene>
-        <!--Item-->
+        <!--All MarvelOus-->
         <scene sceneID="kj1-kW-cPl">
             <objects>
                 <viewController id="IN7-Km-3VU" customClass="CharacterSearchViewController" customModule="MarvelOus" customModuleProvider="target" sceneMemberID="viewController">
@@ -404,6 +404,7 @@
                         <viewLayoutGuide key="safeArea" id="pLg-w6-mlL"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="CollectionView" selectedImage="CollectionView" id="Yme-vn-cYa"/>
+                    <navigationItem key="navigationItem" title="All MarvelOus" id="jKo-G1-dYu"/>
                     <connections>
                         <outlet property="activityIndicator" destination="UZM-YW-aQJ" id="WHh-Y6-5rY"/>
                         <outlet property="collectionView" destination="dyl-7J-3VK" id="cXA-sl-UaZ"/>
