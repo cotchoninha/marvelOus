@@ -11,6 +11,7 @@ import CoreData
 
 class CharacterSearchViewController: UIViewController {
     
+    var isOnSearchMode = false
     var offSet = 0
     var arrayofChars = [APIMarvelCharacter]()
     
@@ -58,6 +59,7 @@ class CharacterSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.isOnSearchMode = false
         fetchCharactersInDB()
         activityIndicator.startAnimating()
         makeRequest(offSetBy: offSet)
@@ -91,8 +93,10 @@ class CharacterSearchViewController: UIViewController {
         print("pullHeight:\(pullHeight)");
         if pullHeight == 0.0
         {
-            makeRequest(offSetBy: offSet)
-            collectionView.reloadData()
+            if !isOnSearchMode{
+                makeRequest(offSetBy: offSet)
+                collectionView.reloadData()
+            }
         }
     }
 }
@@ -209,6 +213,9 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
 extension CharacterSearchViewController: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        arrayofChars.removeAll()
+        collectionView.reloadData()
+        self.isOnSearchMode = true
         activityIndicator.startAnimating()
         guard let query = searchBar.text else {
             return
@@ -231,6 +238,12 @@ extension CharacterSearchViewController: UISearchBarDelegate{
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        //TODO: fetch new items
+        arrayofChars.removeAll()
+        collectionView.reloadData()
+        isOnSearchMode = false
+        makeRequest(offSetBy: 0)
+        collectionView.reloadData()
         searchBar.text = nil
         searchBar.resignFirstResponder()
     }
