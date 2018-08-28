@@ -106,7 +106,6 @@ class CharacterSearchViewController: UIViewController {
         let diffHeight = contentHeight - contentOffset;
         let frameHeight = scrollView.bounds.size.height;
         let pullHeight  = fabs(diffHeight - frameHeight);
-        print("pullHeight:\(pullHeight)");
         if pullHeight == 0.0
         {
             if !isOnSearchMode{
@@ -158,7 +157,7 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
             if Reachability.isConnectedToNetwork(){
                 MarvelRequestManager.sharedInstance().downloadImage(url: urlString) { (imageData, error) in
                     guard error == nil else{
-                        print("MARCELA couldn't download data: \(error)")
+                        print("couldn't download data: \(error)")
                         return
                     }
                     if let imageDataDownloaded = imageData{

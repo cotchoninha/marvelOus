@@ -27,12 +27,6 @@ class MarvelRequestManager: NSObject{
         let request = URLRequest(url: url)
         let session = URLSession.shared
         
-        if Reachability.isConnectedToNetwork(){
-            print("MARCELA - Internet Connection Available!")
-        }else{
-            print("MARCELA - Internet Connection not Available!")
-        }
-        
         let task = session.dataTask(with: request) { (data, response, error) in
             
             // if an error occurs, print it
@@ -102,7 +96,6 @@ class MarvelRequestManager: NSObject{
         let methodParameters = [Constants.MarvelParameterKeys.APIPublicKey: Constants.MarvelParameterValues.APIPublicKey, Constants.MarvelParameterKeys.Hash: Constants.MarvelParameterValues.Hash,  Constants.MarvelParameterKeys.Limit: Constants.MarvelParameterValues.Limit, Constants.MarvelParameterKeys.NameStartsWith: (nameStartsWith ?? nil), Constants.MarvelParameterKeys.Ts: Constants.MarvelParameterValues.Ts] as [String : Any]
         
         let urlString = Constants.Marvel.APIBaseURL + escapedParameters(methodParameters as [String:AnyObject])
-        print("MARCELA: URLSTRING \(urlString)")
         let url = URL(string: urlString)!
         let request = URLRequest(url: url)
         let session = URLSession.shared

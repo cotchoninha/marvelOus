@@ -30,7 +30,6 @@ class FavoritesTabBarController: UITabBarController, UITabBarControllerDelegate 
     //MARK: Method that will save user preference on Collection view
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
          UserDefaults.standard.set(item.tag, forKey: tabPreferenceKey)
-        print("selected item \(item.tag)")
     }
     
 }
