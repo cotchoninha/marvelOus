@@ -27,6 +27,12 @@ class MarvelRequestManager: NSObject{
         let request = URLRequest(url: url)
         let session = URLSession.shared
         
+        if Reachability.isConnectedToNetwork(){
+            print("MARCELA - Internet Connection Available!")
+        }else{
+            print("MARCELA - Internet Connection not Available!")
+        }
+        
         let task = session.dataTask(with: request) { (data, response, error) in
             
             // if an error occurs, print it
@@ -87,8 +93,7 @@ class MarvelRequestManager: NSObject{
             }
             completionHandlerForGETMARVEL(true, charactersArray, totalCharacters, nil)
         }
-        task.resume()
-        
+            task.resume()
     }
     
     //MARK: This method will request specific characters from Marvel API with the name begining with
@@ -218,6 +223,5 @@ class MarvelRequestManager: NSObject{
             task.resume()
         }
     }
-
 }
 

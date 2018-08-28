@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SystemConfiguration
 
 class CharacterSearchViewController: UIViewController {
     
@@ -38,27 +39,37 @@ class CharacterSearchViewController: UIViewController {
     
     //MARK: Method for making request on Marvel API
     @objc fileprivate func makeRequest(offSetBy: Int) {
-        MarvelRequestManager.sharedInstance().getAllMarvelCharacters(offSet: offSetBy) { (success, arrayOfCharacters, totalNumberOfCharacters, error) in
-            if success{
-                if let arrayOfCharacters = arrayOfCharacters{
-                    for item in arrayOfCharacters{
-                        self.arrayofChars.append(item)
+        if Reachability.isConnectedToNetwork(){
+            MarvelRequestManager.sharedInstance().getAllMarvelCharacters(offSet: offSetBy) { (success, arrayOfCharacters, totalNumberOfCharacters, error) in
+                if success{
+                    if let arrayOfCharacters = arrayOfCharacters{
+                        for item in arrayOfCharacters{
+                            self.arrayofChars.append(item)
+                        }
                     }
-                }
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                    self.activityIndicator.hidesWhenStopped = true
-                    self.activityIndicator.stopAnimating()
-                }
-                if let totalNumberOfCharacters = totalNumberOfCharacters{
-                    if self.offSet <= totalNumberOfCharacters{
-                        self.offSet += 52
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                        self.activityIndicator.hidesWhenStopped = true
+                        self.activityIndicator.stopAnimating()
                     }
+                    if let totalNumberOfCharacters = totalNumberOfCharacters{
+                        if self.offSet <= totalNumberOfCharacters{
+                            self.offSet += 52
+                        }
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator.hidesWhenStopped = true
+                        UserAlertManager.showAlert(title: "No characters were found.", message: "Due to network connection or invalid input no characters were found.", buttonMessage: "Try again.", viewController: self)
+                    }
+                    print("Couldn't get Marvel's Characters: \(error?.localizedDescription)")
                 }
-            }else{
-                UserAlertManager.showAlert(title: "No characters were found.", message: "Due to network connection or invalid input no characters were found.", buttonMessage: "Try again.", viewController: self)
-                print("Couldn't get Marvel's Characters: \(error?.localizedDescription)")
             }
+        }else{
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.hidesWhenStopped = true
+            UserAlertManager.showAlert(title: "There's no internet connection.", message: "Please connect your phone to the internet and try again.", buttonMessage: "Ok", viewController: self)
         }
     }
     
@@ -144,20 +155,26 @@ extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionV
             cell.characterPhoto.image = #imageLiteral(resourceName: "placeholder")
             cell.activityIndicatorCell.startAnimating()
             let urlString = "\(self.arrayofChars[indexPath.item].path).\(self.arrayofChars[indexPath.item].imgExtension)"
-            MarvelRequestManager.sharedInstance().downloadImage(url: urlString) { (imageData, error) in
-                guard error == nil else{
-                    print("MARCELA couldn't download data: \(error)")
-                    return
+            if Reachability.isConnectedToNetwork(){
+                MarvelRequestManager.sharedInstance().downloadImage(url: urlString) { (imageData, error) in
+                    guard error == nil else{
+                        print("MARCELA couldn't download data: \(error)")
+                        return
+                    }
+                    if let imageDataDownloaded = imageData{
+                        self.arrayofChars[indexPath.item].characterPhoto = imageDataDownloaded
+                    }
+                    
+                    DispatchQueue.main.async {
+                        collectionView.reloadItems(at: [indexPath])
+                    }
                 }
-                if let imageDataDownloaded = imageData{
-                    self.arrayofChars[indexPath.item].characterPhoto = imageDataDownloaded
-                }
-                
-                DispatchQueue.main.async {
-                    collectionView.reloadItems(at: [indexPath])
-                }
+            }else{
+                cell.activityIndicatorCell.stopAnimating()
+                cell.activityIndicatorCell.hidesWhenStopped = true
+                UserAlertManager.showAlert(title: "There's no internet connection.", message: "Please connect your phone to the internet and try again.", buttonMessage: "Ok", viewController: self)
             }
-        //COMMENT: after image has been downloaded activity indicator will stop and the image will be placed on cell
+            //COMMENT: after image has been downloaded activity indicator will stop and the image will be placed on cell
         }else{
             cell.activityIndicatorCell.stopAnimating()
             cell.activityIndicatorCell.hidesWhenStopped = true
@@ -231,24 +248,30 @@ extension CharacterSearchViewController: UISearchBarDelegate{
         guard let query = searchBar.text else {
             return
         }
-        MarvelRequestManager.sharedInstance().getMarvelCharactersWithName(nameStartsWith: query) { (success, listOfSearchedCharacters, error) in
-            if success{
-                if let searchedCharacters = listOfSearchedCharacters{
-                    self.arrayofChars = searchedCharacters
+        if Reachability.isConnectedToNetwork(){
+            MarvelRequestManager.sharedInstance().getMarvelCharactersWithName(nameStartsWith: query) { (success, listOfSearchedCharacters, error) in
+                if success{
+                    if let searchedCharacters = listOfSearchedCharacters{
+                        self.arrayofChars = searchedCharacters
+                    }
+                    DispatchQueue.main.async {
+                        searchBar.resignFirstResponder()
+                        self.collectionView.reloadData()
+                        self.activityIndicator.hidesWhenStopped = true
+                        self.activityIndicator.stopAnimating()
+                    }
+                }else{
+                    UserAlertManager.showAlert(title: "No characters were found.", message: "Due to network connection or invalid input no characters were found.", buttonMessage: "Try again.", viewController: self)
+                    print("Couldn't get Marvel's Characters: \(error?.localizedDescription)")
                 }
-                DispatchQueue.main.async {
-                    searchBar.resignFirstResponder()
-                    self.collectionView.reloadData()
-                    self.activityIndicator.hidesWhenStopped = true
-                    self.activityIndicator.stopAnimating()
-                }
-            }else{
-                UserAlertManager.showAlert(title: "No characters were found.", message: "Due to network connection or invalid input no characters were found.", buttonMessage: "Try again.", viewController: self)
-                print("Couldn't get Marvel's Characters: \(error?.localizedDescription)")
             }
+        }else{
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.hidesWhenStopped = true
+            UserAlertManager.showAlert(title: "There's no internet connection.", message: "Please connect your phone to the internet and try again.", buttonMessage: "Ok", viewController: self)
         }
     }
-
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         arrayofChars.removeAll()
         collectionView.reloadData()
@@ -259,3 +282,41 @@ extension CharacterSearchViewController: UISearchBarDelegate{
         searchBar.resignFirstResponder()
     }
 }
+
+public class Reachability {
+    
+    class func isConnectedToNetwork() -> Bool {
+        
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            return false
+        }
+        
+        /* Only Working for WIFI
+         let isReachable = flags == .reachable
+         let needsConnection = flags == .connectionRequired
+         
+         return isReachable && !needsConnection
+         */
+        
+        // Working for Cellular and WIFI
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        let ret = (isReachable && !needsConnection)
+        
+        return ret
+        
+    }
+}
+
+
