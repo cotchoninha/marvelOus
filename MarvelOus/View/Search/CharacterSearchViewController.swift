@@ -109,7 +109,7 @@ class CharacterSearchViewController: UIViewController {
 extension CharacterSearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (view.frame.width - 30)/4, height: 150)
+        return CGSize(width: (view.frame.width - 30)/4, height: 125)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
